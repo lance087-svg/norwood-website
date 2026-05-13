@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Measure Your Door — Norwood Supply</title>
+<meta name="description" content="Step-by-step guide to measuring your door for replacement. Door size, jamb width, rough opening, and exterior opening — explained simply by Norwood Supply.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue: #1E70B8;
+    --blue-deep: #134570;
+    --navy: #2A2520;
+    --ink: #2A2520;
+    --paper: #F8F4ED;
+    --paper-warm: #EFE7D6;
+    --line: #DDD3BF;
+    --amber: #B85C2A;
+    --amber-soft: #E8A06B;
+    --white: #FFFFFF;
+    --muted: #6B6358;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-deep); }
+
+  .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+  /* TOP NAV */
+  .topnav {
+    background: var(--navy);
+    color: white;
+    padding: 14px 0;
+    font-size: 14px;
+  }
+  .topnav .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; max-width: 1200px; }
+  .topnav .brand { font-family: 'Lora', serif; font-weight: 700; font-size: 18px; color: white; }
+  .topnav .brand span { color: var(--amber-soft); font-weight: 400; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 12px; }
+  .topnav a { color: white; }
+  .topnav a:hover { color: var(--amber-soft); }
+
+  /* HERO */
+  .page-hero {
+    padding: 72px 0 48px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: var(--muted); }
+  .breadcrumb a:hover { color: var(--blue); }
+  .page-hero .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .page-hero h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    margin-bottom: 18px;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--blue); font-weight: 500; }
+  .page-hero p.lead {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 640px;
+  }
+
+  /* CONTENT */
+  main { padding: 64px 0 80px; }
+  .intro {
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 48px;
+    padding: 24px 28px;
+    background: var(--white);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 4px 4px 0;
+  }
+  .intro strong { color: var(--navy); }
+
+  .measurement {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .measurement-header {
+    background: var(--paper-warm);
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .measurement-num {
+    width: 44px;
+    height: 44px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .measurement-header h2 {
+    font-size: 24px;
+  }
+  .measurement-body {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 28px;
+    padding: 28px;
+    align-items: start;
+  }
+  .measurement-body p {
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .measurement-body p:last-child { margin-bottom: 0; }
+  .measurement-body strong { color: var(--navy); }
+  .measurement-body .example {
+    background: var(--paper-warm);
+    padding: 14px 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--muted);
+    border-left: 3px solid var(--amber);
+    margin-top: 12px;
+  }
+  .measurement-body .example strong { color: var(--amber); display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .diagram {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .diagram svg { width: 100%; height: 100%; }
+
+  .options {
+    margin-top: 14px;
+    counter-reset: opt;
+  }
+  .options li {
+    list-style: none;
+    padding: 12px 0 12px 36px;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .options li::before {
+    counter-increment: opt;
+    content: counter(opt);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    background: var(--paper-warm);
+    color: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .options li strong { color: var(--navy); display: block; margin-bottom: 4px; }
+  .options li small { color: var(--muted); font-size: 14px; }
+
+  /* CTA BAND */
+  .cta-band {
+    margin-top: 56px;
+    background: var(--navy);
+    color: white;
+    padding: 48px 40px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(200,118,26,0.18), transparent 50%);
+  }
+  .cta-band > * { position: relative; }
+  .cta-band h2 {
+    color: white;
+    font-size: clamp(26px, 3.5vw, 36px);
+    margin-bottom: 14px;
+  }
+  .cta-band h2 em { color: var(--amber-soft); font-style: italic; font-weight: 400; }
+  .cta-band p { color: rgba(255,255,255,0.85); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--amber); color: white; }
+  .btn-primary:hover { background: white; color: var(--navy); }
+  .btn-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: white; color: var(--navy); border-color: white; }
+
+  /* FORM SECTION */
+  .form-section {
+    margin-top: 64px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -20px rgba(10,37,64,0.18);
+  }
+  .form-header {
+    background: var(--navy);
+    color: white;
+    padding: 40px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 90% 30%, rgba(200,118,26,0.18), transparent 50%);
+  }
+  .form-header > * { position: relative; }
+  .eyebrow-light {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--amber-soft);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .form-header h2 {
+    color: white;
+    font-size: clamp(26px, 3.5vw, 36px);
+    margin-bottom: 12px;
+  }
+  .form-header h2 em { color: var(--amber-soft); font-style: italic; font-weight: 400; }
+  .form-header p { color: rgba(255,255,255,0.85); font-size: 16px; max-width: 580px; }
+  .form-header p a { color: var(--amber-soft); border-bottom: 1px dotted var(--amber-soft); }
+  .form-header p a:hover { color: white; border-color: white; }
+
+  .measure-form {
+    padding: 36px 40px 40px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .field { display: flex; flex-direction: column; }
+  .field label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .field .req { color: var(--amber); }
+  .field input, .field select, .field textarea {
+    padding: 12px 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    background: white;
+  }
+  .field textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
+  .field input::placeholder, .field textarea::placeholder { color: #B5AB99; }
+
+  .measurements-fieldset {
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 22px 24px 14px;
+    margin-bottom: 22px;
+    background: var(--paper);
+  }
+  .measurements-fieldset legend {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    padding: 0 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .measurements-fieldset .hint {
+    font-weight: 400;
+    color: var(--muted);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .measurements-fieldset .form-grid { margin-bottom: 0; }
+
+  .photo-note {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--amber);
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .photo-note strong { color: var(--navy); }
+
+  .submit-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(30,112,184,0.25);
+    width: 100%;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover {
+    background: var(--blue-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(30,112,184,0.35);
+  }
+  .form-fineprint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    padding: 28px 0;
+    font-size: 13px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  footer a { color: var(--amber-soft); }
+
+  @media (max-width: 700px) {
+    .measurement-body { grid-template-columns: 1fr; }
+    .diagram { max-width: 280px; margin: 0 auto; }
+    .page-hero { padding: 48px 0 32px; }
+    main { padding: 40px 0 56px; }
+    .cta-band { padding: 36px 24px; }
+    .form-header { padding: 32px 24px 28px; }
+    .measure-form { padding: 28px 24px 32px; }
+    .form-grid { grid-template-columns: 1fr; gap: 14px; }
+    .form-row { grid-template-columns: 1fr; gap: 14px; }
+    .measurements-fieldset { padding: 18px 18px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="container">
+    <div class="brand">Norwood Supply<span>Doors · Millwork · Building Materials</span></div>
+    <div><a href="../index.html">← Back to site</a> &nbsp; · &nbsp; <a href="tel:9047686818">(904) 768-6818</a></div>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#tools">Tools</a> &nbsp;/&nbsp; How to Measure Your Door</div>
+    <div class="eyebrow">Customer Guide</div>
+    <h1>How to <em>measure</em> your door for replacement.</h1>
+    <p class="lead">Four sets of measurements are all you need to order the right door the first time. Walk through them in order — it takes about ten minutes with a tape measure.</p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+    <div class="intro">
+      <strong>Before you start:</strong> in most cases, simply order a new door the same size as the old one. If you alter the size or add sidelights, you'll have to reframe the opening and alter many details — that usually doubles or triples the size of the job.
+    </div>
+
+    <!-- 1. DOOR SIZE -->
+    <div class="measurement">
+      <div class="measurement-header">
+        <div class="measurement-num">1</div>
+        <h2>Door Size</h2>
+      </div>
+      <div class="measurement-body">
+        <div>
+          <p>Measure the <strong>width and height of your old door</strong> (the slab itself, not the opening).</p>
+          <p>Round up to full inches to find the size of the replacement door you'll need.</p>
+          <div class="example">
+            <strong>Example</strong>
+            If your door measures 35-3/4" wide × 79-1/2" tall, you'll order a 36" × 80" door.
+          </div>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+            <!-- Door -->
+            <rect x="25" y="15" width="50" height="80" fill="#F8F4ED" stroke="#2A2520" stroke-width="1.2"/>
+            <rect x="32" y="22" width="36" height="30" fill="none" stroke="#2A2520" stroke-width="0.6"/>
+            <rect x="32" y="58" width="36" height="30" fill="none" stroke="#2A2520" stroke-width="0.6"/>
+            <circle cx="71" cy="55" r="1.2" fill="#2A2520"/>
+            <!-- Width arrow -->
+            <line x1="25" y1="103" x2="75" y2="103" stroke="#1E70B8" stroke-width="0.8"/>
+            <polygon points="25,103 28,101 28,105" fill="#1E70B8"/>
+            <polygon points="75,103 72,101 72,105" fill="#1E70B8"/>
+            <text x="50" y="109" font-family="Sora" font-size="5" fill="#1E70B8" text-anchor="middle" font-weight="700">WIDTH</text>
+            <!-- Height arrow -->
+            <line x1="15" y1="15" x2="15" y2="95" stroke="#1E70B8" stroke-width="0.8"/>
+            <polygon points="15,15 13,18 17,18" fill="#1E70B8"/>
+            <polygon points="15,95 13,92 17,92" fill="#1E70B8"/>
+            <text x="9" y="58" font-family="Sora" font-size="5" fill="#1E70B8" text-anchor="middle" font-weight="700" transform="rotate(-90 9 58)">HEIGHT</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. JAMB WIDTH -->
+    <div class="measurement">
+      <div class="measurement-header">
+        <div class="measurement-num">2</div>
+        <h2>Jamb Width</h2>
+      </div>
+      <div class="measurement-body">
+        <div>
+          <p>Measure from the <strong>backside of the interior trim</strong> to the <strong>backside of the exterior trim</strong>.</p>
+          <p>Specify this jamb width when you order your prehung door. This guarantees the interior trim will fit flush to the wall without adding "jamb extensions."</p>
+          <div class="example">
+            <strong>Common sizes</strong>
+            4-9/16" is standard for 2×4 walls. 6-9/16" is standard for 2×6 walls. We stock both.
+          </div>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Wall section, top-down view -->
+            <rect x="20" y="35" width="60" height="30" fill="#EFE7D6" stroke="#2A2520" stroke-width="0.6"/>
+            <!-- Interior trim -->
+            <rect x="14" y="32" width="6" height="36" fill="#1E70B8" opacity="0.9"/>
+            <!-- Exterior trim -->
+            <rect x="80" y="32" width="6" height="36" fill="#B85C2A" opacity="0.9"/>
+            <!-- Door slab in jamb -->
+            <rect x="38" y="44" width="24" height="2" fill="#2A2520"/>
+            <!-- Labels -->
+            <text x="17" y="28" font-family="Sora" font-size="4.5" fill="#1E70B8" text-anchor="middle" font-weight="700">INT</text>
+            <text x="83" y="28" font-family="Sora" font-size="4.5" fill="#B85C2A" text-anchor="middle" font-weight="700">EXT</text>
+            <!-- Measurement arrow -->
+            <line x1="20" y1="78" x2="80" y2="78" stroke="#2A2520" stroke-width="0.8"/>
+            <polygon points="20,78 23,76 23,80" fill="#2A2520"/>
+            <polygon points="80,78 77,76 77,80" fill="#2A2520"/>
+            <text x="50" y="86" font-family="Sora" font-size="5" fill="#2A2520" text-anchor="middle" font-weight="700">JAMB WIDTH</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ROUGH OPENING -->
+    <div class="measurement">
+      <div class="measurement-header">
+        <div class="measurement-num">3</div>
+        <h2>Rough Opening</h2>
+      </div>
+      <div class="measurement-body">
+        <div>
+          <p>You'll need to <strong>remove the interior trim</strong> for accurate measurements of the rough opening.</p>
+          <p>Measure the opening <strong>width between framing members</strong> and from the <strong>bottom of the sill to the top of the opening</strong>.</p>
+          <p>Compare these measurements to the rough opening requirements of your new door to make sure it will fit.</p>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+            <!-- Framing members (studs and header) -->
+            <rect x="22" y="12" width="6" height="86" fill="#B85C2A" opacity="0.7"/>
+            <rect x="72" y="12" width="6" height="86" fill="#B85C2A" opacity="0.7"/>
+            <rect x="22" y="12" width="56" height="6" fill="#B85C2A" opacity="0.7"/>
+            <!-- Rough opening -->
+            <rect x="28" y="18" width="44" height="80" fill="#F8F4ED" stroke="#2A2520" stroke-width="0.6" stroke-dasharray="2,1"/>
+            <!-- Width arrow -->
+            <line x1="28" y1="105" x2="72" y2="105" stroke="#1E70B8" stroke-width="0.8"/>
+            <polygon points="28,105 31,103 31,107" fill="#1E70B8"/>
+            <polygon points="72,105 69,103 69,107" fill="#1E70B8"/>
+            <text x="50" y="111" font-family="Sora" font-size="4.5" fill="#1E70B8" text-anchor="middle" font-weight="700">R.O. WIDTH</text>
+            <!-- Height arrow -->
+            <line x1="15" y1="18" x2="15" y2="98" stroke="#1E70B8" stroke-width="0.8"/>
+            <polygon points="15,18 13,21 17,21" fill="#1E70B8"/>
+            <polygon points="15,98 13,95 17,95" fill="#1E70B8"/>
+            <text x="9" y="58" font-family="Sora" font-size="4.5" fill="#1E70B8" text-anchor="middle" font-weight="700" transform="rotate(-90 9 58)">R.O. HT</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. EXTERIOR / MASONRY OPENING -->
+    <div class="measurement">
+      <div class="measurement-header">
+        <div class="measurement-num">4</div>
+        <h2>Exterior Opening (or "Masonry Opening")</h2>
+      </div>
+      <div class="measurement-body">
+        <div>
+          <p>If you have a brick or stone door surround, this is your <strong>masonry opening</strong>.</p>
+          <p>Measure to the <strong>outsides of the exterior casing</strong>, then from the <strong>bottom of the sill to the top of the trim</strong>.</p>
+          <p>Compare these measurements with those of a prehung door that has standard 2"-wide brick molding trim. If the framed door with standard trim is too small to fill the space — or if you want a different trim style — you have three options:</p>
+          <ul class="options">
+            <li>
+              <strong>Order a door with wider, flat casing to fit the opening</strong>
+              <small>The cleanest solution. You can always add decorative molding overtop to approximate your existing exterior trim style.</small>
+            </li>
+            <li>
+              <strong>Order with standard molding and fill the gap</strong>
+              <small>Use additional strips of wood to bridge between the new trim and the masonry opening.</small>
+            </li>
+            <li>
+              <strong>Order without exterior molding and make your own</strong>
+              <small>Best for custom or restoration work where you want to match historic profiles exactly.</small>
+            </li>
+          </ul>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+            <!-- Brick surround -->
+            <pattern id="brick" patternUnits="userSpaceOnUse" width="10" height="5">
+              <rect width="10" height="5" fill="#E8A06B" opacity="0.4"/>
+              <line x1="0" y1="0" x2="10" y2="0" stroke="#B85C2A" stroke-width="0.3"/>
+              <line x1="0" y1="2.5" x2="10" y2="2.5" stroke="#B85C2A" stroke-width="0.3"/>
+              <line x1="5" y1="0" x2="5" y2="2.5" stroke="#B85C2A" stroke-width="0.3"/>
+              <line x1="0" y1="2.5" x2="0" y2="5" stroke="#B85C2A" stroke-width="0.3"/>
+            </pattern>
+            <rect x="5" y="8" width="90" height="92" fill="url(#brick)"/>
+            <!-- Door + trim -->
+            <rect x="28" y="14" width="44" height="84" fill="#F8F4ED" stroke="#2A2520" stroke-width="0.6"/>
+            <rect x="32" y="18" width="36" height="76" fill="#F8F4ED" stroke="#2A2520" stroke-width="0.4"/>
+            <!-- Width arrow -->
+            <line x1="28" y1="105" x2="72" y2="105" stroke="#2A2520" stroke-width="0.8"/>
+            <polygon points="28,105 31,103 31,107" fill="#2A2520"/>
+            <polygon points="72,105 69,103 69,107" fill="#2A2520"/>
+            <text x="50" y="110" font-family="Sora" font-size="4" fill="#2A2520" text-anchor="middle" font-weight="700">MASONRY OPENING</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMBEDDED FORM -->
+    <div class="form-section" id="send-measurements">
+      <div class="form-header">
+        <div class="eyebrow-light">Step 5</div>
+        <h2>Got your numbers? <em>Send them over.</em></h2>
+        <p>We'll review your measurements and get back to you with a quote — usually same day during business hours. Prefer to talk it through? <a href="tel:9047686818">Call (904) 768-6818</a> or <a href="sms:9042386383">text photos</a>.</p>
+      </div>
+
+      <form action="https://formspree.io/f/mojkylqe" method="POST" class="measure-form">
+        <!-- Honeypot for spam protection -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <!-- Subject line for Lance's inbox -->
+        <input type="hidden" name="_subject" value="New door measurement submission from norwoodsupply.com">
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Your Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="(904) 555-0123">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="optional">
+          </div>
+          <div class="field">
+            <label for="zip">Project Zip Code <span class="req">*</span></label>
+            <input type="text" id="zip" name="zip" required pattern="[0-9]{5}" maxlength="5" placeholder="32208">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="door_type">Door Type <span class="req">*</span></label>
+            <select id="door_type" name="door_type" required>
+              <option value="">Choose one…</option>
+              <option value="Exterior">Exterior</option>
+              <option value="Interior">Interior</option>
+              <option value="Not sure">Not sure — please help me</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="quantity">How Many?</label>
+            <input type="text" id="quantity" name="quantity" placeholder="e.g. 1, or 12 doors">
+          </div>
+          <div class="field">
+            <label for="prehung">Prehung or Slab?</label>
+            <select id="prehung" name="prehung">
+              <option value="">Choose one…</option>
+              <option value="Prehung">Prehung (with frame)</option>
+              <option value="Slab">Slab only (no frame)</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="measurements-fieldset">
+          <legend>Measurements <span class="hint">(fill in what you have — leave the rest blank)</span></legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="door_size">1. Door Slab Size (W × H)</label>
+              <input type="text" id="door_size" name="door_size" placeholder='e.g. 36" x 80"'>
+            </div>
+            <div class="field">
+              <label for="jamb_width">2. Jamb Width</label>
+              <input type="text" id="jamb_width" name="jamb_width" placeholder='e.g. 4-9/16"'>
+            </div>
+            <div class="field">
+              <label for="rough_opening">3. Rough Opening (W × H)</label>
+              <input type="text" id="rough_opening" name="rough_opening" placeholder='e.g. 38" x 82-1/2"'>
+            </div>
+            <div class="field">
+              <label for="masonry">4. Masonry / Exterior Opening</label>
+              <input type="text" id="masonry" name="masonry" placeholder="if applicable">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="notes">Project Notes</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Anything else we should know — style preferences, glass options, threshold color, hinge finish, timeline, etc. The more detail, the better the quote."></textarea>
+        </div>
+
+        <div class="field photo-note">
+          <strong>📸 Photos help a lot.</strong> Text pictures of your existing door, frame, and trim to <a href="sms:9042386383">(904) 238-6383</a> after submitting — or attach by email reply once we follow up.
+        </div>
+
+        <button type="submit" class="submit-btn">Send My Measurements →</button>
+        <p class="form-fineprint">By submitting, you agree to be contacted by Norwood Supply about your project. We don't share your info with anyone, ever.</p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    Norwood Supply · 6200 Norwood Ave, Jacksonville, FL 32208 · <a href="tel:9047686818">(904) 768-6818</a> · Family-owned since 1971
+  </div>
+</footer>
+
+</body>
+</html>

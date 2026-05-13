@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Door Swing Identifier — Norwood Supply</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --cream-dark: #ede6d8;
+    --brown: #5a3e28;
+    --brown-light: #7a5c3e;
+    --brown-pale: #c4a882;
+    --gold: #b8893a;
+    --gold-light: #d4a855;
+    --green: #2d4a2d;
+    --green-mid: #3d6b3d;
+    --text: #2a1f14;
+    --text-mid: #5a4a38;
+    --text-light: #8a7a68;
+    --border: #d8cbb8;
+    --white: #ffffff;
+    --shadow: rgba(58,38,18,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--green);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .logo-block { display: flex; flex-direction: column; }
+  .logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: .02em;
+    line-height: 1;
+  }
+  .logo-tag {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--brown-pale);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .header-contact {
+    font-size: 12px;
+    color: var(--brown-pale);
+    text-align: right;
+    line-height: 1.8;
+  }
+  .header-contact a { color: var(--brown-pale); text-decoration: none; }
+
+  /* ── HERO STRIP ── */
+  .hero {
+    background: var(--brown);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-icon {
+    width: 44px; height: 44px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .hero-text p {
+    font-size: 13px;
+    color: var(--brown-pale);
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+  }
+
+  /* ── STEP CARDS ── */
+  .step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    transition: opacity .2s, transform .2s;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .step.locked {
+    opacity: .38;
+    pointer-events: none;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    width: 26px; height: 26px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--cream);
+    flex-shrink: 0;
+  }
+  .step-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 18px;
+    border-radius: 24px;
+    border: 1.5px solid var(--border);
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .btn:hover { border-color: var(--brown-pale); color: var(--brown); background: var(--cream-dark); }
+  .btn.on { background: var(--green); border-color: var(--green); color: var(--cream); font-weight: 500; }
+
+  /* ── RESULT CARD ── */
+  #result {
+    display: none;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--shadow);
+    margin-top: 4px;
+    animation: fadeUp .3s ease;
+  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  .result-header {
+    background: var(--green);
+    padding: 20px 24px;
+  }
+  .result-hand {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .result-desc {
+    font-size: 13px;
+    color: var(--brown-pale);
+    font-weight: 300;
+  }
+
+  .result-body { padding: 24px; }
+
+  .door-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .door-view-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 10px;
+  }
+  .your-view-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--cream);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-top: 6px;
+    letter-spacing: .04em;
+  }
+
+  /* ── RO SECTION ── */
+  .ro-section {
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    margin-top: 4px;
+  }
+  .ro-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+  .ro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .ro-grid label {
+    font-size: 12px;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .ro-grid input, .ro-grid select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color .15s;
+  }
+  .ro-grid input:focus, .ro-grid select:focus {
+    outline: none;
+    border-color: var(--brown-pale);
+  }
+  .ro-result {
+    display: none;
+    background: var(--green);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--cream);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .ro-result b { font-weight: 600; font-size: 16px; }
+  .ro-result small { font-size: 11px; opacity: .75; }
+
+  /* ── NOTE ── */
+  .note {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .note b { color: var(--brown); }
+
+  /* ── RESET / ACTIONS ── */
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .reset-btn {
+    padding: 9px 20px;
+    border-radius: 24px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .reset-btn:hover { border-color: var(--brown-pale); color: var(--brown); }
+
+  .contact-btn {
+    padding: 9px 20px;
+    border-radius: 24px;
+    border: 1.5px solid var(--green);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--green);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .contact-btn:hover { background: var(--green); color: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown);
+    padding: 20px 32px;
+    text-align: center;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .footer-info {
+    font-size: 12px;
+    color: var(--brown-pale);
+    line-height: 1.9;
+  }
+  .footer-info a { color: var(--brown-pale); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    header { padding: 14px 16px; }
+    .hero { padding: 18px 16px; }
+    main { padding: 20px 14px 40px; }
+    .result-body { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-block">
+    <div class="logo-name">Norwood Supply</div>
+    <div class="logo-tag">Doors &amp; Millwork · Jacksonville, FL</div>
+  </div>
+  <div class="header-contact">
+    <a href="tel:9047686818">(904) 768-6818</a><br>
+    <a href="http://norwoodsupply.com">norwoodsupply.com</a><br>
+    Mon–Fri 7:30–5:00 · Sat 8:30–12:00
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="2" width="13" height="20" rx="1.5" stroke="#2d4a2d" stroke-width="1.8" fill="#d4a855"/>
+      <rect x="5.5" y="3.5" width="10" height="17" rx="1" fill="#b8893a"/>
+      <circle cx="15.5" cy="12" r="1.2" fill="#2d4a2d"/>
+      <rect x="4" y="2" width="2" height="20" rx="1" fill="#8a6030"/>
+    </svg>
+  </div>
+  <div class="hero-text">
+    <h1>Door Swing Identifier</h1>
+    <p>Answer 3 questions to find the correct door hand for your project.</p>
+  </div>
+</div>
+
+<main>
+  <div class="step" id="q1">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-label">Where are you standing?</div>
+    </div>
+    <div class="btn-row">
+      <div class="btn" onclick="go(1,'out',this)">Outside the house</div>
+      <div class="btn" onclick="go(1,'in',this)">Inside the house</div>
+    </div>
+  </div>
+
+  <div class="step locked" id="q2">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-label">Looking at the door — hinges are on which side?</div>
+    </div>
+    <div class="btn-row">
+      <div class="btn" onclick="go(2,'left',this)">My left</div>
+      <div class="btn" onclick="go(2,'right',this)">My right</div>
+    </div>
+  </div>
+
+  <div class="step locked" id="q3">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-label">Which way does the door open?</div>
+    </div>
+    <div class="btn-row">
+      <div class="btn" onclick="go(3,'in',this)">Toward the inside of the house</div>
+      <div class="btn" onclick="go(3,'out',this)">Toward the outside of the house</div>
+    </div>
+  </div>
+
+  <div id="result"></div>
+</main>
+
+<footer>
+  <div class="footer-name">Norwood Supply</div>
+  <div class="footer-info">
+    6200 Norwood Ave, Jacksonville, FL 32208<br>
+    <a href="tel:9047686818">(904) 768-6818</a> &nbsp;·&nbsp;
+    <a href="mailto:lance087@gmail.com">lance087@gmail.com</a> &nbsp;·&nbsp;
+    <a href="http://norwoodsupply.com">norwoodsupply.com</a>
+  </div>
+</footer>
+
+<script>
+const A = {};
+
+// ── TRUTH TABLE — verified by Lance Hopper ──
+// hl = hinge on LEFT in diagram from customer's POV
+const T = {
+  'out-right-in':  { hand:'Right hand inswing',  hl:false },
+  'out-left-in':   { hand:'Left hand inswing',   hl:true  },
+  'out-right-out': { hand:'Left hand outswing',  hl:false },
+  'out-left-out':  { hand:'Right hand outswing', hl:true  },
+  'in-right-in':   { hand:'Left hand inswing',   hl:false },
+  'in-left-in':    { hand:'Right hand inswing',  hl:true  },
+  'in-right-out':  { hand:'Right hand outswing', hl:false },
+  'in-left-out':   { hand:'Left hand outswing',  hl:true  },
+};
+
+function go(q, v, el) {
+  A[q] = v;
+  el.parentNode.querySelectorAll('.btn').forEach(b => b.classList.remove('on'));
+  el.classList.add('on');
+  if (q===1) { enable('q2'); clr(2); clr(3); disable('q3'); document.getElementById('result').style.display='none'; }
+  if (q===2) { enable('q3'); clr(3); document.getElementById('result').style.display='none'; }
+  if (q===3) render();
+}
+function enable(id){ document.getElementById(id).classList.remove('locked'); }
+function disable(id){ document.getElementById(id).classList.add('locked'); }
+function clr(q){ A[q]=null; document.getElementById('q'+q).querySelectorAll('.btn').forEach(b=>b.classList.remove('on')); }
+
+const notes = {
+  'Right hand inswing':  'Very common hand. Pre-hung units widely available — standard stock at Norwood Supply.',
+  'Left hand inswing':   'Most common residential hand. Standard stock item — typically available same day.',
+  'Right hand outswing': 'Outswing door — verify threshold type, weatherstrip, and hinge style before ordering.',
+  'Left hand outswing':  'Outswing door — same considerations as RHO, opposite hinge side.',
+};
+
+function render() {
+  const key = `${A[1]}-${A[2]}-${A[3]}`;
+  const m = T[key];
+  if (!m) return;
+  const inswing = m.hand.includes('inswing');
+  const viewFromOutside = A[1]==='out';
+  const vlbl = viewFromOutside ? 'View from outside the house' : 'View from inside the house';
+
+  document.getElementById('result').innerHTML = `
+    <div class="result-header">
+      <div class="result-hand">${m.hand}</div>
+      <div class="result-desc">${inswing ? 'Door opens inward — into the house' : 'Door opens outward — away from the house'}</div>
+    </div>
+    <div class="result-body">
+      <div class="door-center">
+        ${drawDoor(m.hl, inswing, viewFromOutside)}
+        <div class="door-view-label">${vlbl}</div>
+        <div class="your-view-badge">your view</div>
+      </div>
+
+      <div class="ro-section">
+        <div class="ro-title">Rough opening calculator</div>
+        <div class="ro-grid">
+          <div><label>Door width (inches)</label><input type="number" id="rw" placeholder="e.g. 36" oninput="ro()"></div>
+          <div><label>Width fraction</label><select id="rwf" onchange="ro()"><option value="0">0"</option><option value=".25">1/4"</option><option value=".5">1/2"</option><option value=".75">3/4"</option></select></div>
+          <div><label>Door height (inches)</label><input type="number" id="rht" placeholder="e.g. 80" oninput="ro()"></div>
+          <div><label>Height fraction</label><select id="rhf" onchange="ro()"><option value="0">0"</option><option value=".25">1/4"</option><option value=".5">1/2"</option><option value=".75">3/4"</option></select></div>
+        </div>
+        <div class="ro-result" id="ror"></div>
+      </div>
+
+      <div class="note"><b>Ordering note:</b> ${notes[m.hand]}</div>
+
+      <div class="actions">
+        <button class="reset-btn" onclick="resetAll()">↺ Start over</button>
+        <a class="contact-btn" href="tel:9047686818">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Norwood Supply
+        </a>
+      </div>
+    </div>`;
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function ro() {
+  const w = (parseFloat(document.getElementById('rw').value)||0) + (parseFloat(document.getElementById('rwf').value)||0);
+  const h = (parseFloat(document.getElementById('rht').value)||0) + (parseFloat(document.getElementById('rhf').value)||0);
+  const el = document.getElementById('ror');
+  if (!w||!h) { el.style.display='none'; return; }
+  const f = v => {
+    const wh=Math.floor(v), fr=v-wh;
+    const fs=fr<.01?'':fr<.26?' 1/4"':fr<.38?' 3/8"':fr<.51?' 1/2"':fr<.76?' 3/4"':' 7/8"';
+    return `${wh}${fs}"`;
+  };
+  el.style.display='block';
+  el.innerHTML=`Rough opening: <b>${f(w+2)} wide &times; ${f(h+2)} tall</b><br><small>Standard +2" allowance each direction</small>`;
+}
+
+function resetAll() {
+  [1,2,3].forEach(q=>clr(q));
+  disable('q2'); disable('q3');
+  document.getElementById('result').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function drawDoor(hl, inswing, viewFromOutside) {
+  const W=220, H=320;
+
+  const cSky='#d4e5f4', cGnd='#b5a898';
+  const cFO='#4a3820', cFI='#7a6248';
+  const cD='#e8e0ce', cMid='#ddd5c0';
+  const cP='#d0c8b0', cPL='#ece5d0', cPD='#b8b098';
+  const cHi='#909098', cKn='#c4aa50', cKD='#8a7030';
+  const cSt='#887060';
+
+  const fX=16,fY=16,fW=W-32,fH=H-48;
+  const dX=fX+10,dY=fY+10,dW=fW-20,dH=fH-10;
+  const kX=hl?dX+dW-15:dX+15, kY=dY+dH*.54;
+
+  const mg=10, gt=6, pW=dW-mg*2, cw=Math.floor((pW-gt)/2);
+  const c1=dX+mg, c2=dX+mg+cw+gt;
+  const pH=dH-mg*2;
+  const r0=Math.floor(pH*.26), r1=Math.floor(pH*.38), r2=pH-r0-r1-gt*2;
+  const y0=dY+mg, y1=y0+r0+gt, y2=y1+r1+gt;
+
+  const pan=(x,y,w,h)=>{const b=3.5;return(
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="${cP}" stroke="${cPD}" stroke-width=".8"/>` +
+    `<line x1="${x+b}" y1="${y+b}" x2="${x+w-b}" y2="${y+b}" stroke="${cPL}" stroke-width="1" opacity=".9"/>` +
+    `<line x1="${x+b}" y1="${y+b}" x2="${x+b}" y2="${y+h-b}" stroke="${cPL}" stroke-width="1" opacity=".9"/>` +
+    `<line x1="${x+b}" y1="${y+h-b}" x2="${x+w-b}" y2="${y+h-b}" stroke="${cPD}" stroke-width=".7" opacity=".8"/>` +
+    `<line x1="${x+w-b}" y1="${y+b}" x2="${x+w-b}" y2="${y+h-b}" stroke="${cPD}" stroke-width=".7" opacity=".8"/>`)};
+
+  const hing=cy=>{const hx=hl?dX-2:dX+dW-5;return(
+    `<rect x="${hx}" y="${cy-5}" width="4" height="10" rx="1" fill="${cHi}" stroke="${cSt}" stroke-width=".5"/>` +
+    `<rect x="${hx+3}" y="${cy-4}" width="4" height="8" rx="1" fill="${cHi}" stroke="${cSt}" stroke-width=".5"/>`)};
+
+  const pivX=hl?dX:dX+dW;
+  const freeX=hl?dX+dW:dX;
+  const aR=dW, aEX=pivX, aEY=dY+aR;
+
+  const goesIn = viewFromOutside ? inswing : !inswing;
+  let sw;
+  if ( hl &&  goesIn) sw=0;
+  else if ( hl && !goesIn) sw=1;
+  else if (!hl &&  goesIn) sw=1;
+  else sw=0;
+
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:240px;border-radius:8px" xmlns="http://www.w3.org/2000/svg">
+<rect width="${W}" height="${H}" fill="${cSky}" rx="8"/>
+<rect x="0" y="${H*.87}" width="${W}" height="${H*.13}" fill="${cGnd}"/>
+<rect x="${fX-6}" y="${fY-6}" width="${fW+12}" height="${fH+16}" rx="5" fill="${cFO}"/>
+<rect x="${fX}" y="${fY}" width="${fW}" height="${fH+8}" rx="3" fill="${cFI}"/>
+<rect x="${dX}" y="${dY}" width="${dW}" height="${dH}" rx="2" fill="${cD}"/>
+<rect x="${dX+2}" y="${dY}" width="${dW-4}" height="${dH*.4}" rx="2" fill="${cMid}" opacity=".3"/>
+${pan(c1,y0,cw,r0)}${pan(c2,y0,cw,r0)}
+${pan(c1,y1,cw,r1)}${pan(c2,y1,cw,r1)}
+${pan(c1,y2,cw,r2)}${pan(c2,y2,cw,r2)}
+${hing(dY+dH*.15)}${hing(dY+dH*.50)}${hing(dY+dH*.82)}
+<circle cx="${kX}" cy="${kY}" r="7.5" fill="${cKn}" stroke="${cKD}" stroke-width="1.5"/>
+<circle cx="${kX}" cy="${kY}" r="3.2" fill="${cKD}" opacity=".45"/>
+<rect x="${hl?kX+6:kX-15}" y="${kY-2.2}" width="14" height="4.4" rx="2.2" fill="${cKD}" opacity=".35"/>
+<path d="M ${freeX} ${dY} A ${aR} ${aR} 0 0 ${sw} ${aEX} ${aEY}" fill="none" stroke="#2d6a2d" stroke-width="2" stroke-dasharray="7 4" opacity=".9"/>
+</svg>`;
+}
+</script>
+</body>
+</html>
