@@ -3,71 +3,556 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page Not Found — Norwood Supply</title>
-<meta http-equiv="refresh" content="5; url=/">
+<title>Flush Glazed vs. Insert Glazed Doors — Norwood Supply</title>
+<meta name="description" content="Confused by 'flush glazed' vs 'insert glazed' fiberglass doors? Here's the plain-English difference, with photos and advice on which style is right for your home.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%231E70B8%22/><text x=%2250%22 y=%2270%22 font-family=%22Georgia,serif%22 font-size=%2260%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22white%22>N</text></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1E70B8;
+    --primary-deep: #134570;
+    --ink: #2A2520;
+    --paper: #F8F4ED;
+    --paper-warm: #EFE7D6;
+    --line: #DDD3BF;
+    --muted: #6B6358;
+    --accent: #B85C2A;
+    --accent-light: #E8A06B;
+    --white: #FFFFFF;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Sora', sans-serif;
-    background: linear-gradient(180deg, #F8F4ED 0%, #EFE7D6 100%);
-    color: #2A2520;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    line-height: 1.6;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 540px; text-align: center; }
-  .num {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: 120px;
-    color: #1E70B8;
-    line-height: 1;
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-  h1 {
-    font-family: 'Lora', serif;
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 16px;
+  h1, h2, h3 {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--ink);
     letter-spacing: -0.015em;
     line-height: 1.15;
+    font-weight: 600;
   }
-  h1 em { font-style: italic; color: #1E70B8; }
-  p { color: #6B6358; margin-bottom: 28px; font-size: 17px; }
-  p.fine { font-size: 13px; color: #B8763A; margin-top: 28px; margin-bottom: 0; font-style: italic; }
-  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  h1 em, h2 em, h3 em { font-style: italic; color: var(--primary); font-weight: 500; }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { color: var(--primary-deep); }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* TOP NAV */
+  .topnav {
+    background: var(--ink);
+    color: white;
+    padding: 14px 0;
+    font-size: 14px;
+  }
+  .topnav .container-wide { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .topnav .brand { font-family: 'Lora', serif; font-weight: 700; font-size: 18px; color: white; }
+  .topnav .brand span { color: var(--accent-light); font-weight: 400; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 12px; }
+  .topnav a { color: white; }
+  .topnav a:hover { color: var(--accent-light); }
+
+  /* HERO */
+  .page-hero {
+    padding: 72px 0 48px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .breadcrumb a { color: var(--muted); }
+  .breadcrumb a:hover { color: var(--primary); }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+  .page-hero h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin-bottom: 18px;
+  }
+  .page-hero p.lead {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.65;
+  }
+
+  /* MAIN CONTENT */
+  main { padding: 64px 0 80px; }
+
+  .feature-image {
+    margin-bottom: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(42,37,32,0.25);
+  }
+  .feature-image img { width: 100%; height: auto; }
+
+  .intro {
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 56px;
+    padding: 28px 32px;
+    background: var(--white);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.7;
+  }
+  .intro strong { color: var(--ink); }
+
+  /* COMPARISON CARDS */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  .compare-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .compare-card-header {
+    padding: 24px 28px 20px;
+    color: white;
+    position: relative;
+  }
+  .compare-card.flush .compare-card-header { background: var(--primary); }
+  .compare-card.insert .compare-card-header { background: var(--accent); }
+  .compare-card .label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .compare-card h2 {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .compare-card-body { padding: 28px; flex: 1; }
+  .compare-card h3 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+  }
+  .compare-card ul {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+  .compare-card li {
+    padding: 10px 0 10px 28px;
+    position: relative;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .compare-card li:last-child { border-bottom: none; }
+  .compare-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--paper-warm);
+    border: 2px solid;
+  }
+  .compare-card.flush li::before { border-color: var(--primary); }
+  .compare-card.insert li::before { border-color: var(--accent); }
+  .compare-card li strong { display: block; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .compare-card li small { font-size: 13px; color: var(--muted); }
+
+  .best-for {
+    background: var(--paper-warm);
+    padding: 18px 22px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-top: 16px;
+  }
+  .best-for strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  /* DECISION GUIDE */
+  .decision {
+    background: var(--ink);
+    color: white;
+    padding: 56px 48px;
+    border-radius: 8px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .decision::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 90% 30%, rgba(184,92,42,0.18), transparent 50%);
+  }
+  .decision > * { position: relative; }
+  .decision h2 {
+    color: white;
+    font-size: clamp(28px, 3.5vw, 40px);
+    margin-bottom: 12px;
+  }
+  .decision h2 em { color: var(--accent-light); font-style: italic; font-weight: 500; }
+  .decision .sub {
+    color: rgba(255,255,255,0.78);
+    font-size: 16px;
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .decision-row {
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .decision-row .verdict {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 30px;
+    color: white;
+  }
+  .decision-row .verdict.flush { background: var(--primary); }
+  .decision-row .verdict.insert { background: var(--accent); }
+  .decision-row .reason {
+    color: rgba(255,255,255,0.92);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .decision-row .reason strong { color: white; display: block; margin-bottom: 2px; }
+
+  /* NORWOOD NOTE */
+  .norwood-note {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    padding: 32px 36px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 56px;
+  }
+  .norwood-note .label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .norwood-note h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .norwood-note p { color: var(--ink); line-height: 1.7; font-size: 16px; }
+  .norwood-note p + p { margin-top: 12px; }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--ink);
+    color: white;
+    padding: 48px 40px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(30,112,184,0.22), transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(184,92,42,0.18), transparent 55%);
+  }
+  .cta-band > * { position: relative; }
+  .cta-band h2 {
+    color: white;
+    font-size: clamp(26px, 3.5vw, 34px);
+    margin-bottom: 12px;
+  }
+  .cta-band h2 em { color: var(--accent-light); font-style: italic; font-weight: 500; }
+  .cta-band p { color: rgba(255,255,255,0.85); margin-bottom: 28px; max-width: 540px; margin: 0 auto 28px; }
+  .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   .btn {
     display: inline-flex;
-    padding: 14px 28px;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
     border-radius: 30px;
     font-weight: 600;
     font-size: 15px;
-    text-decoration: none;
     transition: all 0.2s;
+    font-family: inherit;
+    text-decoration: none;
   }
-  .btn-primary { background: #1E70B8; color: white; }
-  .btn-primary:hover { background: #134570; }
-  .btn-ghost { color: #2A2520; border: 1.5px solid #2A2520; }
-  .btn-ghost:hover { background: #2A2520; color: white; }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: white; color: var(--ink); }
+  .btn-amber { background: var(--accent); color: white; }
+  .btn-amber:hover { background: var(--accent-light); color: var(--ink); }
+  .btn-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: white; color: var(--ink); border-color: white; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 28px 0;
+    font-size: 13px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 64px;
+  }
+  footer a { color: var(--accent-light); }
+
+  @media (max-width: 720px) {
+    .compare { grid-template-columns: 1fr; }
+    .decision { padding: 40px 28px; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 48px 0 32px; }
+    main { padding: 40px 0 56px; }
+    .intro { padding: 22px 24px; }
+    .norwood-note { padding: 24px 24px; }
+    .cta-band { padding: 36px 24px; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="num">404</div>
-  <h1>That door doesn't <em>open</em> anymore.</h1>
-  <p>Looks like the page you're after has moved or doesn't exist. Head back to our home page and we'll get you where you're going.</p>
-  <div class="btn-row">
-    <a href="/" class="btn btn-primary">← Back to Home</a>
-    <a href="tel:9047686818" class="btn btn-ghost">📞 Call (904) 768-6818</a>
+
+<div class="topnav">
+  <div class="container-wide">
+    <div class="brand">Norwood Supply<span>Doors · Millwork · Building Materials</span></div>
+    <div><a href="../index.html">← Back to site</a> &nbsp; · &nbsp; <a href="tel:9047686818">(904) 768-6818</a></div>
   </div>
-  <p class="fine">Redirecting in 5 seconds…</p>
 </div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#tools">Tools</a> &nbsp;/&nbsp; Flush vs. Insert Glazing</div>
+    <div class="eyebrow">Door Knowledge</div>
+    <h1>Flush Glazed vs. <em>Insert Glazed</em> Doors.</h1>
+    <p class="lead">Both terms describe how decorative glass is installed in a fiberglass door. The difference is small at a glance — and big in practice. Here's what to know before you order.</p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <!-- Feature image -->
+    <div class="feature-image">
+      <img src="../images/glazing-comparison.jpg" alt="Comparison of flush glazed and insert glazed fiberglass doors — Norwood Supply">
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+      <strong>The short version:</strong> on a flush-glazed door, the glass sits perfectly level with the surface — like it's part of the door itself. On an insert-glazed door, the glass is held in by a small frame screwed into the door, sitting slightly proud of the surface. Both are fully weather-sealed. The choice is about looks, budget, and serviceability.
+    </div>
+
+    <!-- Side-by-side comparison cards -->
+    <div class="compare">
+      <div class="compare-card flush">
+        <div class="compare-card-header">
+          <div class="label">Modern · Premium</div>
+          <h2>Flush Glazed</h2>
+        </div>
+        <div class="compare-card-body">
+          <h3>What you get</h3>
+          <ul>
+            <li><strong>Seamless surface</strong><small>Glass is bonded into the panel, level with the face</small></li>
+            <li><strong>Smooth profile</strong><small>No raised frame catches dust, dirt, or wasps</small></li>
+            <li><strong>Modern, minimalist look</strong><small>Reads as architectural — fits contemporary builds</small></li>
+            <li><strong>No visible fasteners</strong><small>Cleaner lines from the curb</small></li>
+          </ul>
+          <div class="best-for">
+            <strong>Best for</strong>
+            New construction, modern remodels, custom builds, anyone who wants the door's appearance to feel intentional and high-end.
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-card insert">
+        <div class="compare-card-header">
+          <div class="label">Traditional · Practical</div>
+          <h2>Insert Glazed</h2>
+        </div>
+        <div class="compare-card-body">
+          <h3>What you get</h3>
+          <ul>
+            <li><strong>Glass set in a frame</strong><small>The frame is attached to the door with screws</small></li>
+            <li><strong>Slightly raised profile</strong><small>You can feel the frame edge with your hand</small></li>
+            <li><strong>Classic, traditional look</strong><small>The look most people picture when they think "front door"</small></li>
+            <li><strong>Easier glass replacement</strong><small>If the glass breaks, the frame unscrews and a new unit drops in</small></li>
+          </ul>
+          <div class="best-for">
+            <strong>Best for</strong>
+            Most home styles, budget-conscious projects, replacement doors that need to match existing style — and the vast majority of what we stock.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision guide -->
+    <div class="decision">
+      <h2>So which is <em>right for me?</em></h2>
+      <p class="sub">Quick answers to the questions we hear most often.</p>
+      <div class="decision-grid">
+        <div class="decision-row">
+          <div class="verdict flush">Flush</div>
+          <div class="reason"><strong>You want a "designed" look</strong>If clean lines and a contemporary feel matter, flush is the answer.</div>
+        </div>
+        <div class="decision-row">
+          <div class="verdict insert">Insert</div>
+          <div class="reason"><strong>You want broad style options</strong>More decorative glass patterns are available in insert.</div>
+        </div>
+        <div class="decision-row">
+          <div class="verdict insert">Insert</div>
+          <div class="reason"><strong>You're budget-conscious</strong>Insert is generally less expensive — and that's true at every glass level.</div>
+        </div>
+        <div class="decision-row">
+          <div class="verdict flush">Flush</div>
+          <div class="reason"><strong>Easier to clean</strong>No frame edge to wipe around. Helpful in pollen-heavy seasons.</div>
+        </div>
+        <div class="decision-row">
+          <div class="verdict insert">Insert</div>
+          <div class="reason"><strong>Glass replacement matters</strong>If anything ever breaks, insert is much cheaper to fix.</div>
+        </div>
+        <div class="decision-row">
+          <div class="verdict flush">Flush</div>
+          <div class="reason"><strong>Modern home or new build</strong>Flush makes a contemporary-style home feel finished.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Norwood note -->
+    <div class="norwood-note">
+      <div class="label">At Norwood</div>
+      <h3>We stock both — and we'll help you pick.</h3>
+      <p>Most of our in-stock fiberglass exterior doors are insert glazed because that's what 80% of customers want and what most home styles call for. We do keep a selection of flush-glazed doors on the lot, and we can special-order any decorative glass pattern in either style through our distributor partners.</p>
+      <p>If you're not sure which way to go, bring us a picture of your house and we'll tell you what'll look best on it. Five-minute conversation. No pressure.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-band">
+      <h2>Got a project in <em>mind?</em></h2>
+      <p>Call, text us a picture of your house, or stop by the yard. We'll help you pick the right door — flush, insert, or something else entirely.</p>
+      <div class="cta-buttons">
+        <a href="tel:9047686818" class="btn btn-amber">📞 Call (904) 768-6818</a>
+        <a href="sms:9042386383" class="btn btn-ghost">💬 Text (904) 238-6383</a>
+        <a href="../index.html" class="btn btn-ghost">← Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    Norwood Supply · 6200 Norwood Ave, Jacksonville, FL 32208 · <a href="tel:9047686818">(904) 768-6818</a> · Family-owned since 1971
+  </div>
+</footer>
+
+
+<script>
+// Desktop fallback for tel:/sms: links — shows the number in a toast since
+// desktop browsers don't have phone apps to handle those links natively
+(function() {
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+  if (isMobile) return; // Mobile devices handle tel:/sms: natively
+
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+    if (!link) return;
+    e.preventDefault();
+    var isTel = link.href.indexOf('tel:') === 0;
+    var raw = link.href.replace(/^(tel:|sms:)/, '').replace(/\D/g, '');
+    var formatted = raw.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(formatted).catch(function(){});
+    }
+    showContactToast(isTel ? 'call' : 'text', formatted);
+  });
+
+  function showContactToast(type, number) {
+    var existing = document.getElementById('contact-toast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.id = 'contact-toast';
+    var label = type === 'call' ? '📞 Call us at' : '💬 Text photos to';
+    toast.innerHTML =
+      '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#E8A06B;font-weight:700;margin-bottom:6px;">' + label + '</div>' +
+      '<div style="font-family:\'Lora\',Georgia,serif;font-size:28px;font-weight:600;font-style:italic;color:#fff;letter-spacing:.01em;">' + number + '</div>' +
+      '<div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:8px;letter-spacing:.04em;">✓ Number copied to clipboard</div>';
+    toast.style.cssText =
+      'position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(40px);' +
+      'background:#2A2520;color:#fff;padding:22px 36px;border-radius:14px;' +
+      'font-family:"Sora",system-ui,sans-serif;box-shadow:0 30px 60px rgba(0,0,0,.45);' +
+      'z-index:9999;text-align:center;opacity:0;transition:all .35s cubic-bezier(.16,1,.3,1);' +
+      'border:1px solid rgba(232,160,107,.3);max-width:90vw;';
+    document.body.appendChild(toast);
+    requestAnimationFrame(function() {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    setTimeout(function() {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(40px)';
+      setTimeout(function() { toast.remove(); }, 350);
+    }, 4500);
+  }
+})();
+</script>
+
 </body>
 </html>
