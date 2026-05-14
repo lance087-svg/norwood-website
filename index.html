@@ -349,6 +349,47 @@
   .product-link::after { content: '→'; transition: transform 0.2s; }
   .product-card:hover .product-link::after { transform: translateX(4px); }
 
+  /* INVENTORY CTA (after product category cards) */
+  .inventory-cta {
+    margin-top: 48px;
+    text-align: center;
+    padding: 36px 24px;
+    background: var(--paper-warm);
+    border-radius: 8px;
+    border: 1.5px dashed var(--accent-light);
+  }
+  .inventory-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--ink);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    transition: all 0.25s;
+  }
+  .inventory-cta-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px -10px rgba(30, 112, 184, 0.4);
+  }
+  .inventory-cta-btn .arrow {
+    font-size: 20px;
+    transition: transform 0.2s;
+  }
+  .inventory-cta-btn:hover .arrow { transform: translateX(4px); }
+  .inventory-cta-note {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--gray-mid);
+    font-style: italic;
+  }
+
   /* SPECIAL ORDER */
   .special-order {
     background: var(--ink);
@@ -896,6 +937,7 @@
       <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
       <ul>
         <li><a href="#products">Products</a></li>
+        <li><a href="catalog.html">Inventory</a></li>
         <li><a href="#special">Special Order</a></li>
         <li><a href="#video">Video</a></li>
         <li><a href="#tools">Tools</a></li>
@@ -914,7 +956,7 @@
     <div>
       <div class="hero-eyebrow">55 Years in the Same Place</div>
       <h1>The door <em>specialists</em> Jacksonville built.</h1>
-      <p class="lead">Family-owned since 1971, on the same lot at 6200 Norwood Avenue. Over a thousand doors in stock — and the family expertise to help you pick the right one.</p>
+      <p class="lead">Family-owned since 1971, in the same location at 6200 Norwood Avenue. Over a thousand doors in stock — and the family expertise to help you pick the right one.</p>
       <div class="hero-cta">
         <a href="tel:9047686818" class="btn btn-primary">📞 Call (904) 768-6818</a>
         <a href="sms:9042386383" class="btn btn-ghost">💬 Text Photos</a>
@@ -924,7 +966,7 @@
       <img src="images/hero-black-double-door.jpg" alt="Black double-door fiberglass exterior entry with arched glass — Norwood Supply, Jacksonville FL" loading="eager">
       <div class="hero-badge">
         <strong>55 yrs</strong>
-        <span>Same Lot · Same Family</span>
+        <span>Same Location · Same Family</span>
       </div>
     </div>
   </div>
@@ -973,6 +1015,13 @@
           <a href="#visit" class="product-link">Get a quote</a>
         </div>
       </div>
+    </div>
+    <div class="inventory-cta">
+      <a href="catalog.html" class="inventory-cta-btn">
+        Browse our current inventory
+        <span class="arrow">→</span>
+      </a>
+      <p class="inventory-cta-note">29 doors recently stocked — prices and availability change weekly</p>
     </div>
   </div>
 </section>
@@ -1058,7 +1107,7 @@
     <div class="section-head center">
       <div class="eyebrow">See the Yard</div>
       <h2>Meet <em>Norwood.</em></h2>
-      <p>Same lot since 1971. Take a quick look around.</p>
+      <p>Same location since 1971. Take a quick look around.</p>
     </div>
     <div class="video-wrap" data-video-id="DyjV37YhV3Q" role="button" tabindex="0" aria-label="Play Norwood Supply video">
       <img class="video-poster" src="https://i.ytimg.com/vi/DyjV37YhV3Q/maxresdefault.jpg" alt="Norwood Supply — Jacksonville, FL" loading="lazy">

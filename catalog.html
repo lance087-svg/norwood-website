@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Door Inventory — Norwood Supply, Jacksonville FL</title>
+<meta name="description" content="Browse our in-stock door inventory — exterior fiberglass, interior shaker, prehung units. Jacksonville's family door supplier since 1971.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1E70B8;
+  --primary-deep: #134570;
+  --ink: #2A2520;
+  --paper: #F8F4ED;
+  --paper-warm: #EFE7D6;
+  --accent: #B85C2A;
+  --accent-light: #E8A06B;
+  --white: #FFFFFF;
+  --gray-light: #E6DFD0;
+  --gray-mid: #8B8378;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Sora', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-deep); }
+
+h1, h2, h3 { font-family: 'Lora', Georgia, serif; font-weight: 600; line-height: 1.2; color: var(--ink); }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+/* TOPBAR */
+.topbar {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 13px;
+  padding: 10px 0;
+}
+.topbar-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.topbar a { color: var(--accent-light); }
+.topbar a:hover { color: var(--white); }
+
+/* HEADER */
+.header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--gray-light);
+  position: sticky; top: 0; z-index: 100;
+  padding: 16px 0;
+}
+.header-inner {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.logo em { font-style: italic; color: var(--primary); font-weight: 600; }
+.nav ul { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav a {
+  color: var(--ink); font-weight: 500; font-size: 15px;
+  position: relative; padding: 4px 0;
+}
+.nav a:hover { color: var(--primary); }
+.nav .nav-cta {
+  background: var(--primary); color: var(--white); padding: 10px 20px;
+  border-radius: 30px; font-weight: 600; font-size: 14px;
+}
+.nav .nav-cta:hover { background: var(--primary-deep); color: var(--white); }
+
+/* HERO */
+.catalog-hero {
+  background: linear-gradient(160deg, var(--paper-warm) 0%, var(--paper) 100%);
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.catalog-hero .eyebrow {
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 16px;
+}
+.catalog-hero h1 {
+  font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px;
+}
+.catalog-hero h1 em {
+  font-style: italic; color: var(--primary); font-weight: 600;
+}
+.catalog-hero p {
+  max-width: 640px; margin: 0 auto; font-size: 17px; color: var(--gray-mid);
+}
+
+/* FILTER BAR */
+.filter-bar {
+  background: var(--paper);
+  padding: 32px 0 16px;
+  position: sticky; top: 73px;
+  z-index: 90;
+  border-bottom: 1px solid var(--gray-light);
+}
+.filter-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+}
+.filter-tab {
+  background: var(--white); color: var(--ink);
+  border: 1.5px solid var(--gray-light); padding: 10px 24px;
+  border-radius: 30px; font-family: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+.filter-tab:hover {
+  border-color: var(--primary); color: var(--primary);
+}
+.filter-tab.active {
+  background: var(--ink); color: var(--white); border-color: var(--ink);
+}
+.filter-count {
+  font-weight: 400; opacity: 0.6; margin-left: 6px;
+}
+
+/* CATALOG GRID */
+.catalog-section {
+  padding: 48px 0 96px;
+  background: var(--paper);
+}
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 900px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .catalog-grid { grid-template-columns: 1fr; }
+}
+
+.catalog-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 1px 3px rgba(42, 37, 32, 0.04);
+  transition: all 0.25s;
+}
+.catalog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -10px rgba(42, 37, 32, 0.14);
+}
+.catalog-card.hidden { display: none; }
+
+.catalog-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--paper-warm);
+  overflow: hidden;
+}
+.catalog-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.catalog-card:hover .catalog-image img {
+  transform: scale(1.04);
+}
+.catalog-tag {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--ink); color: var(--white);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 20px;
+}
+
+.catalog-body {
+  padding: 22px 24px 26px;
+  display: flex; flex-direction: column; flex-grow: 1;
+}
+.catalog-body h3 {
+  font-size: 19px; line-height: 1.3; margin-bottom: 10px;
+}
+.catalog-price {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 24px; font-weight: 700; color: var(--primary);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.catalog-body p {
+  font-size: 14px; line-height: 1.55; color: var(--gray-mid);
+  margin-bottom: 18px; flex-grow: 1;
+}
+.catalog-cta {
+  display: inline-block;
+  font-size: 13px; font-weight: 700; color: var(--accent);
+  letter-spacing: 0.05em; text-transform: uppercase;
+  align-self: flex-start;
+}
+.catalog-cta:hover { color: var(--accent-light); }
+
+/* FOOTER NOTE */
+.catalog-note {
+  background: var(--ink);
+  color: var(--paper-warm);
+  padding: 56px 0;
+  text-align: center;
+}
+.catalog-note h2 {
+  color: var(--white); font-size: 32px; margin-bottom: 14px;
+}
+.catalog-note h2 em { font-style: italic; color: var(--accent-light); }
+.catalog-note p {
+  max-width: 580px; margin: 0 auto 24px;
+  font-size: 16px; opacity: 0.85;
+}
+.catalog-note-ctas {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.catalog-note-ctas a {
+  display: inline-block;
+  background: var(--primary); color: var(--white);
+  padding: 14px 28px; border-radius: 30px;
+  font-weight: 600;
+}
+.catalog-note-ctas a:hover { background: var(--primary-deep); color: var(--white); }
+.catalog-note-ctas a.secondary {
+  background: transparent; border: 1.5px solid var(--accent-light); color: var(--accent-light);
+}
+.catalog-note-ctas a.secondary:hover { background: var(--accent-light); color: var(--ink); }
+
+/* FOOTER */
+.footer {
+  background: var(--paper-warm);
+  color: var(--ink);
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--gray-light);
+  font-size: 14px;
+}
+.footer .footer-brand {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 18px; font-weight: 700; margin-bottom: 8px;
+}
+.footer-meta { opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div>📞 Call <a href="tel:9047686818">(904) 768-6818</a> &nbsp; · &nbsp; 💬 Text photos <a href="sms:9042386383">(904) 238-6383</a></div>
+    <div>Mon–Fri 7:30–5 · Sat 8:30–12</div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Norwood <em>Supply</em></a>
+    <nav class="nav">
+      <ul>
+        <li><a href="/#products">Categories</a></li>
+        <li><a href="/catalog.html" style="color: var(--primary);">Inventory</a></li>
+        <li><a href="/#tools">Tools</a></li>
+        <li><a href="/#visit">Visit</a></li>
+        <li><a href="tel:9047686818" class="nav-cta">Call (904) 768-6818</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="catalog-hero">
+  <div class="container">
+    <div class="eyebrow">In-Stock Inventory</div>
+    <h1>Browse our <em>door inventory.</em></h1>
+    <p>A selection of doors we currently stock or recently had on the floor. Prices and availability change weekly — call or text us to confirm before you make the drive.</p>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All <span class="filter-count">(29)</span></button>
+      <button class="filter-tab" data-filter="exterior">Exterior <span class="filter-count">(22)</span></button>
+      <button class="filter-tab" data-filter="interior">Interior <span class="filter-count">(7)</span></button>
+    </div>
+  </div>
+</div>
+
+<section class="catalog-section">
+  <div class="container">
+    <div class="catalog-grid">
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_d58810f4a834430ebf6eeb9fd99e0621~mv2.png" alt="Decorative 3/4 Lite Prairie Style Fiberglass Prehung Door Unit with Sidelites" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Decorative 3/4 Lite Prairie Style Fiberglass Prehung Door Unit with Sidelites</h3>
+            <div class="catalog-price">$1379</div>
+            <p>36" wide door and 12" sidelites Actual unit size: 63" x 81-1/2" Fits rough opening: 63-1/2" x 82" Fiberglass - won't dent, rot or rust!…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_658e41bf92ea4548abd0cb27776bf57c~mv2.jpg" alt="Double 6 lite Pre-hung Fiberglass Door 6-0 x 6-8" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Double 6 lite Pre-hung Fiberglass Door 6-0 x 6-8</h3>
+            <div class="catalog-price">$1299</div>
+            <p>Pre-hung double exterior fiberglass 6 light unit with primed wood jambs available in 6 foot wide and six foot eight tall To order, please…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_960a7e9c000b449091a89b50821b96e2~mv2.png" alt="6 lite clear glass 3/0 with 3 sidelights 1/0" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>6 lite clear glass 3/0 with 3 sidelights 1/0</h3>
+            <div class="catalog-price">$1199</div>
+            <p>Primed (not painted/stained as shown in pic) 36" wide door and 12" sidelites Actual unit size: 63" x 81-1/2" Fits rough opening: 63-1/2" x…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_fab2c5e89c274242953c347b85dfe9e6~mv2.png" alt="Full Mini Blind Double Fiberglass Door Unit" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Full Mini Blind Double Fiberglass Door Unit</h3>
+            <div class="catalog-price">$1059</div>
+            <p>Miniblind Full Lite Fiberglass Patio Prehung Double Door Unit Retrofit, replacement size Great for replacing a sliding glass door Available…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_8ae2926bcab6473ba93c70fc280a2ade~mv2.png" alt="Full Lite Fiberglass Patio Prehung Double Door Unit" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Full Lite Fiberglass Patio Prehung Double Door Unit</h3>
+            <div class="catalog-price">$689</div>
+            <p>Standard Size and retro fit Full Lite Fiberglass Patio Prehung Double Door Unit Product Information Standard size double door unit…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_a2fc0b1cbe1b4355900fde78c62a56ae~mv2.png" alt="Full Glass Decorative Prairie Style 3ft wide 6ft8&quot; Tall" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Full Glass Decorative Prairie Style 3ft wide 6ft8&quot; Tall</h3>
+            <div class="catalog-price">$639</div>
+            <p>Available 36" wide Actual unit size: 37-1/2" x 81-1/2" (with 36" door) Fits rough opening: 38" x 82" (with 36' door) fiberglass door…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_cbea9e6cf6a84a199febc7676558f538~mv2.png" alt="3-Lite Craftsman style" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>3-Lite Craftsman style</h3>
+            <div class="catalog-price">$599</div>
+            <p>mooth fiberglass construction 3-Lite Craftsman style glass Flush-glazed (no surface-mounted inserts) Prehung door unit 4-9/16" composite…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_f1c7f84c1dda40f69a83dd246e96ef34~mv2.jpg" alt="Full Mini Blind Single" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Full Mini Blind Single</h3>
+            <div class="catalog-price">$589</div>
+            <p>36" and 32" wide door Actual unit size: 37-1/2" x 81-1/2" Actual unit size: 33-1/2" x 81-1/2" Fits rough opening: 38" x 82" Fiberglass -…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_8dd95da9f639461383e72acb374291a9~mv2.png" alt="Prairie Style 3/4 Glass Fiberglass 1 Panel bottom" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Prairie Style 3/4 Glass Fiberglass 1 Panel bottom</h3>
+            <div class="catalog-price">$489</div>
+            <p>Prairie Style 3/4 Glass Fiberglass 1 Panel bottom prehung in 4&amp;9/16" Primed Wood Jambs available in Left or Right Swing Size 3-0 x 6-8</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_84ab0447cc86444f8abeac65c9e5c4be~mv2.jpg" alt="1/2 Mini Blind Fiberglass" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>1/2 Mini Blind Fiberglass</h3>
+            <div class="catalog-price">$489</div>
+            <p>Miniblind Half Lite Fiberglass Prehung Door Unit Available 32" x 80", 36" x 80" Actual unit size: 33-1/2" x 81-1/2", 37-1/2" x 81-1/2" Fits…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_4c246c308b8a45dba8f51acf993d84a5~mv2.png" alt="6 Lite Fiberglass Door Unit Prehung" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>6 Lite Fiberglass Door Unit Prehung</h3>
+            <div class="catalog-price">$479</div>
+            <p>Prehung Fiberglass Exterior door unit with 6 panes of glass insulated, 4 and 9 sixteenths primed wood jambs 36"w x 80" tall To order,…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_eca4769ebb4a4fbfbaa9691f0ecafd02~mv2.png" alt="4 Lite Exterior Fiberglass Door" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>4 Lite Exterior Fiberglass Door</h3>
+            <div class="catalog-price">$479</div>
+            <p>Exterior Fiberglass Prehung door in four light style hung on four and nine sixteenths jambs 36 inches wide by 80 inches tall To order,…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_eca4769ebb4a4fbfbaa9691f0ecafd02~mv2.png" alt="4 Lite Single Exterior Fiberglass" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>4 Lite Single Exterior Fiberglass</h3>
+            <div class="catalog-price">$479</div>
+            <p>36" wide door Actual unit size: 37-1/2" x 81-1/2" Fits rough opening: 38" x 82" Fiberglass - won't dent, rot or rust! Prehung in primed…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_0f6098bc57b14e44a495ffab48d47f82~mv2.jpg" alt="6 Lite Single Exterior Fiberglass" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>6 Lite Single Exterior Fiberglass</h3>
+            <div class="catalog-price">$479</div>
+            <p>36" wide door Actual unit size: 37-1/2" x 81-1/2" Fits rough opening: 38" x 82" Fiberglass - won't dent, rot or rust! Prehung in 4&amp;9/16…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_f9f3ea24a4d04b43b0459246bf1c8ee8~mv2.png" alt="Oval Prehung Exterior Fiberglass" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Oval Prehung Exterior Fiberglass</h3>
+            <div class="catalog-price">$479</div>
+            <p>3/4 Oval Fiberglass Prehung Door Unit LIMITED STOCK! 36" wide door Actual unit size: 37-1/2" x 81-1/2" Fits rough opening: 38" x 82"…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_aece3b5154bc44aaa2c5f12093bcb9e2~mv2.png" alt="Craftsman Decorative" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Craftsman Decorative</h3>
+            <div class="catalog-price">$469</div>
+            <p>Prehung Fiberglass door, Craftsman style with decorative glass 36 inch wide by 80 inches tall hung on standard prime 4 and 9 sixteenths…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_0280ec93cc184a1997ba676b5b4641f2~mv2.jpg" alt="Craftsman Decorative Fiberglass Exterior Door Unit" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Craftsman Decorative Fiberglass Exterior Door Unit</h3>
+            <div class="catalog-price">$469</div>
+            <p>Available 36" x 80" Actual unit size: 37-1/2" x 81-1/2" Fits rough opening: 38" x 82" Fiberglass door - won't dent, rot or rust! Paintable…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_951b62b96ca74917834dd335583ab6ad~mv2.png" alt="Craftsman Clear Glass" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Craftsman Clear Glass</h3>
+            <div class="catalog-price">$349</div>
+            <p>36" wide door Actual unit size: 37-1/2" x 81-1/2" Fits rough opening: 38" x 82" Fiberglass - won't dent, rot or rust! Prehung in matching…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_a412979044a34c128a9943d94a765e3d~mv2.png" alt="1 Lite Fiberglass Exterior prehung unit" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>1 Lite Fiberglass Exterior prehung unit</h3>
+            <div class="catalog-price">$329</div>
+            <p>Available 32" x 80", 36" x 80" Actual unit size: 33-1/2" x 81-1/2", 37-1/2" x 81-1/2" Fits rough opening: 34" x 82", 38" x 82" Fiberglass…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_04eb0819a6934d418fdff9625c75dd5e~mv2.jpg" alt="French style  single door unit fiberglass" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>French style  single door unit fiberglass</h3>
+            <div class="catalog-price">$329</div>
+            <p>Available 32" x 80", 36" x 80" Actual unit size: 33-1/2" x 81-1/2", 37-1/2" x 81-1/2" Fits rough opening: 34" x 82", 38" x 82" Fiberglass…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_b8e4fed679c34453846b0bc2f2719afb~mv2.png" alt="Fiberglass exterior door units" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Fiberglass exterior door units</h3>
+            <div class="catalog-price">$279</div>
+            <p>Available 32" x 80", 36" x 80" Actual unit size: 33-1/2" x 81-1/2", 37-1/2" x 81-1/2" Fits rough opening: 34" x 82", 38" x 82" Fiberglass…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_56b826719d6446c5a1d4564242921d10~mv2.png" alt="Exterior fiberglass prehung door unit" loading="lazy">
+            <span class="catalog-tag">Exterior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Exterior fiberglass prehung door unit</h3>
+            <div class="catalog-price">$229</div>
+            <p>exterior fiberglass prehung door units on 4&amp;9/16 Primed wood jambs available in 36", 32" and 30 " widths all 6'/8" in height available in…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_79031a4816c04aafa610694570b595a7~mv2.png" alt="2-panel Shaker Style Prehung Interior" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>2-panel Shaker Style Prehung Interior</h3>
+            <div class="catalog-price">$215</div>
+            <p>We stock 18",24",28",30",32",36" To order, please CALL OR EMAIL us to ensure your order is set to your specifications. Not all doors are…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_faca61fb7022456d891c9efbfdca4d68~mv2.png" alt="Shaker style doors REAL WOOD!" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Shaker style doors REAL WOOD!</h3>
+            <div class="catalog-price">$215</div>
+            <p>These doors are solid wood stiles and rail prehung in a primed wood frame.To order, please CALL OR EMAIL us to ensure your order is set to…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_f452d2a2aaec46b8a7221887f4805d84~mv2.png" alt="Frosted shaker style 5 panel door slabs" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Frosted shaker style 5 panel door slabs</h3>
+            <div class="catalog-price">$199</div>
+            <p>Elevate your space with elegance. Introducing Frosted Glass Shaker Doors. Timeless beauty for your home. Call now for a touch of luxury. 🏡✨…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_9da44998e48548218a71579f1b3ca49d~mv2.png" alt="Shaker Styles 1 2 and 3" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Shaker Styles 1 2 and 3</h3>
+            <div class="catalog-price">$135</div>
+            <p>Shaker style interior doors 1 panel 2 panel and 3 panel we also have 5 not pictured</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_27a91d57614747d88b7dad6884460d19~mv2.jpg" alt="Shaker style (stocking 2 panel and 5 panel)" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Shaker style (stocking 2 panel and 5 panel)</h3>
+            <div class="catalog-price">$135</div>
+            <p>Solid Wood Shaker Door slab most widths in stock 80" tall Introducing our Shaker style doors - a timeless addition to any home. These doors…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_79031a4816c04aafa610694570b595a7~mv2.png" alt="Shaker Style Primed Wood Doors 2 Panel Style" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Shaker Style Primed Wood Doors 2 Panel Style</h3>
+            <div class="catalog-price">$135</div>
+            <p>Shaker style 2 panel interior doors, all wood primed. Available in 24 inch 28 inch 30 inch 28 inch 32 inch and 36 inch all 80" SLABS ONLY…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+        <article class="catalog-card" data-cat="interior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_79031a4816c04aafa610694570b595a7~mv2.png" alt="REAL WOOD 2 &amp; 5 Panel Shaker Style Doors" loading="lazy">
+            <span class="catalog-tag">Interior</span>
+          </div>
+          <div class="catalog-body">
+            <h3>REAL WOOD 2 &amp; 5 Panel Shaker Style Doors</h3>
+            <div class="catalog-price">$135</div>
+            <p>These are doors only(no frame) not prehung, in a frame $239 To order, please CALL OR EMAIL us to ensure your order is set to your…</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+          </div>
+        </article>
+    </div>
+  </div>
+</section>
+
+<section class="catalog-note">
+  <div class="container">
+    <h2>Don't see what you <em>need?</em></h2>
+    <p>We special-order from TLC Millwork, Dyke Industries, Woodgrain, and Millwork Sales. Almost any door style, size, or finish — we can get it. Just send us a photo or the specs.</p>
+    <div class="catalog-note-ctas">
+      <a href="tel:9047686818">📞 Call (904) 768-6818</a>
+      <a href="sms:9042386383" class="secondary">💬 Text Photos to (904) 238-6383</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">Norwood <em>Supply</em></div>
+    <div class="footer-meta">6200 Norwood Ave · Jacksonville, FL 32208 · Family-owned since 1971</div>
+  </div>
+</footer>
+
+<script>
+// Filter functionality
+document.querySelectorAll('.filter-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.catalog-card').forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>
+
+<script>
+// Desktop fallback for tel:/sms: links
+(function() {
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+  if (isMobile) return;
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+    if (!link) return;
+    e.preventDefault();
+    var isTel = link.href.indexOf('tel:') === 0;
+    var raw = link.href.replace(/^(tel:|sms:)/, '').replace(/\D/g, '');
+    var formatted = raw.replace(/(\d{3})(\d{3})(\d{4})/, '() -');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(formatted).catch(function(){});
+    }
+    showContactToast(isTel ? 'call' : 'text', formatted);
+  });
+  function showContactToast(type, number) {
+    var existing = document.getElementById('contact-toast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.id = 'contact-toast';
+    var label = type === 'call' ? '📞 Call us at' : '💬 Text photos to';
+    toast.innerHTML =
+      '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#E8A06B;font-weight:700;margin-bottom:6px;">' + label + '</div>' +
+      '<div style="font-family:'Lora',Georgia,serif;font-size:28px;font-weight:600;font-style:italic;color:#fff;letter-spacing:.01em;">' + number + '</div>' +
+      '<div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:8px;letter-spacing:.04em;">✓ Number copied to clipboard</div>';
+    toast.style.cssText =
+      'position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(40px);' +
+      'background:#2A2520;color:#fff;padding:22px 36px;border-radius:14px;' +
+      'font-family:"Sora",system-ui,sans-serif;box-shadow:0 30px 60px rgba(0,0,0,.45);' +
+      'z-index:9999;text-align:center;opacity:0;transition:all .35s cubic-bezier(.16,1,.3,1);' +
+      'border:1px solid rgba(232,160,107,.3);max-width:90vw;';
+    document.body.appendChild(toast);
+    requestAnimationFrame(function() {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    setTimeout(function() {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(40px)';
+      setTimeout(function() { toast.remove(); }, 350);
+    }, 4500);
+  }
+})();
+</script>
+
+</body>
+</html>
