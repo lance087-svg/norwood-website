@@ -49,6 +49,8 @@
   :root {
     --primary: #1E70B8;
     --primary-deep: #134570;
+    --primary-bright: #3D8FE0;
+    --primary-soft: #D8E8F5;
     --ink: #2A2520;
     --paper: #F8F4ED;
     --paper-warm: #EFE7D6;
@@ -172,6 +174,13 @@
     letter-spacing: 0.12em;
     background: rgba(248,244,237,0.6);
     z-index: 2;
+  }
+  .brand-emblem {
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 6px 16px rgba(30, 112, 184, 0.22));
   }
   .hero-eyebrow {
     display: inline-flex;
@@ -333,6 +342,10 @@
     object-fit: cover;
     transition: transform 0.6s;
   }
+  .product-image.landscape-fit img {
+    object-fit: cover;
+    object-position: center;
+  }
   .product-card:hover .product-image img { transform: scale(1.04); }
   .product-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
   .product-body h3 { font-size: 26px; margin-bottom: 10px; font-weight: 600; }
@@ -353,30 +366,43 @@
   .inventory-cta {
     margin-top: 48px;
     text-align: center;
-    padding: 36px 24px;
-    background: var(--paper-warm);
-    border-radius: 8px;
-    border: 1.5px dashed var(--accent-light);
+    padding: 44px 28px;
+    background: linear-gradient(135deg, var(--primary-bright) 0%, var(--primary) 65%, var(--primary-deep) 100%);
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 12px 32px -8px rgba(30, 112, 184, 0.32);
+    position: relative;
+    overflow: hidden;
+  }
+  .inventory-cta::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+    pointer-events: none;
   }
   .inventory-cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: var(--ink);
-    color: var(--white);
+    background: var(--white);
+    color: var(--primary-deep);
     padding: 16px 32px;
     border-radius: 30px;
     font-family: 'Sora', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     letter-spacing: 0.01em;
     transition: all 0.25s;
+    position: relative;
+    z-index: 1;
   }
   .inventory-cta-btn:hover {
-    background: var(--primary);
-    color: var(--white);
-    transform: translateY(-1px);
-    box-shadow: 0 10px 30px -10px rgba(30, 112, 184, 0.4);
+    background: var(--paper-warm);
+    color: var(--primary-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.3);
   }
   .inventory-cta-btn .arrow {
     font-size: 20px;
@@ -384,10 +410,12 @@
   }
   .inventory-cta-btn:hover .arrow { transform: translateX(4px); }
   .inventory-cta-note {
-    margin-top: 14px;
+    margin-top: 16px;
     font-size: 14px;
-    color: var(--gray-mid);
+    color: rgba(255, 255, 255, 0.88);
     font-style: italic;
+    position: relative;
+    z-index: 1;
   }
 
   /* SPECIAL ORDER */
@@ -509,74 +537,6 @@
   }
   .why-item h3 { font-size: 22px; margin-bottom: 12px; font-weight: 600; }
   .why-item p { color: var(--muted); font-size: 15px; line-height: 1.65; }
-
-  /* VIDEO SECTION */
-  .video-section {
-    background: var(--white);
-    padding: 100px 0;
-  }
-  .video-section .section-head { margin-bottom: 48px; }
-  .video-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 40px 80px -24px rgba(42,37,32,0.4);
-    cursor: pointer;
-    background: var(--ink);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .video-wrap:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 48px 96px -24px rgba(42,37,32,0.48);
-  }
-  .video-wrap:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 4px;
-  }
-  .video-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s, filter 0.3s;
-  }
-  .video-wrap:hover .video-poster {
-    transform: scale(1.02);
-    filter: brightness(0.85);
-  }
-  .video-play {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    background: rgba(30, 112, 184, 0.95);
-    color: white;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 6px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    transition: all 0.25s;
-    backdrop-filter: blur(4px);
-  }
-  .video-wrap:hover .video-play {
-    background: var(--accent);
-    transform: translate(-50%, -50%) scale(1.08);
-  }
-  .video-wrap iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
 
   /* DOOR KNOWLEDGE */
   .knowledge {
@@ -939,7 +899,6 @@
         <li><a href="#products">Products</a></li>
         <li><a href="catalog.html">Inventory</a></li>
         <li><a href="#special">Special Order</a></li>
-        <li><a href="#video">Video</a></li>
         <li><a href="#tools">Tools</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#visit">Visit</a></li>
@@ -954,6 +913,21 @@
   <div class="established-mark">Est. 1971</div>
   <div class="container">
     <div>
+      <svg class="brand-emblem" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg" aria-label="Norwood Supply — Since 1971">
+        <!-- Drop shadow -->
+        <path d="M 4 16 L 30 4 L 292 4 L 318 16 L 318 90 L 292 102 L 30 102 L 4 90 Z" fill="rgba(19, 69, 112, 0.18)"/>
+        <!-- Main ribbon body — bright blue -->
+        <path d="M 0 12 L 26 0 L 288 0 L 314 12 L 314 86 L 288 98 L 26 98 L 0 86 Z" fill="#3D8FE0"/>
+        <!-- Inner highlight border -->
+        <path d="M 10 17 L 32 8 L 282 8 L 304 17 L 304 81 L 282 90 L 32 90 L 10 81 Z" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        <!-- Stars -->
+        <text x="32" y="55" font-size="13" fill="rgba(255,255,255,0.85)" font-family="Georgia, serif">★</text>
+        <text x="272" y="55" font-size="13" fill="rgba(255,255,255,0.85)" font-family="Georgia, serif">★</text>
+        <!-- Main text -->
+        <text x="160" y="46" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="22" font-weight="700" fill="white" letter-spacing="2">NORWOOD SUPPLY</text>
+        <!-- Italic subtext -->
+        <text x="160" y="72" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="14" font-style="italic" fill="rgba(255,255,255,0.95)" letter-spacing="0.5">since 1971</text>
+      </svg>
       <div class="hero-eyebrow">55 Years in the Same Place</div>
       <h1>The door <em>specialists</em> Jacksonville built.</h1>
       <p class="lead">Family-owned since 1971, in the same location at 6200 Norwood Avenue. Over a thousand doors in stock — and the family expertise to help you pick the right one.</p>
@@ -992,7 +966,7 @@
     </div>
     <div class="products">
       <div class="product-card">
-        <div class="product-image"><img src="images/exterior-craftsman-3lite.jpg" alt="Craftsman 3-lite over 2-panel fiberglass exterior door — in stock at Norwood Supply"></div>
+        <div class="product-image"><img src="https://static.wixstatic.com/media/b98b97_8ae2926bcab6473ba93c70fc280a2ade~mv2.png" alt="Full Lite Fiberglass Patio Prehung Double Door Unit — featured exterior door at Norwood Supply"></div>
         <div class="product-body">
           <h3>Exterior Doors</h3>
           <p>Fiberglass prehung and slab — craftsman, full-lite, decorative glass, panel styles. Florida approval codes available. Composite 4-9/16" jambs, multiple threshold and hinge finishes. Impact-rated by special order.</p>
@@ -1000,18 +974,18 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-image"><img src="images/interior-4lite-living.jpg" alt="4-lite glass interior door in a styled living room"></div>
+        <div class="product-image"><img src="https://static.wixstatic.com/media/b98b97_faca61fb7022456d891c9efbfdca4d68~mv2.png" alt="Shaker style real wood interior doors — featured at Norwood Supply"></div>
         <div class="product-body">
           <h3>Interior Doors</h3>
-          <p>Engineered shaker, 5-panel, frosted glass, bifold louver and panel. Prehung or slab — most popular sizes and swings stocked, special orders welcome.</p>
+          <p>Engineered shaker, 5-panel, frosted glass, bifold louver and panel — and real solid-wood shaker too. Prehung or slab, most popular sizes and swings stocked, special orders welcome.</p>
           <a href="#visit" class="product-link">Get a quote</a>
         </div>
       </div>
       <div class="product-card">
-        <div class="product-image"><img src="images/interior-4lite-hall.jpg" alt="4-lite glass interior door with millwork casing and trim"></div>
+        <div class="product-image landscape-fit"><img src="images/millwork-collage.jpg" alt="Crown molding, baseboard, casing, and trim profiles — millwork samples from Norwood Supply"></div>
         <div class="product-body">
           <h3>Millwork</h3>
-          <p>Trim, casing, baseboard, jambs, and custom millwork to spec for residential projects. If you can describe it or hand us a sample, we can source it.</p>
+          <p>Crown molding, baseboard, casing, chair rail, and custom trim. Primed pine, MDF, hardwood — if you can describe it or hand us a sample, we can source it.</p>
           <a href="#visit" class="product-link">Get a quote</a>
         </div>
       </div>
@@ -1021,7 +995,7 @@
         Browse our current inventory
         <span class="arrow">→</span>
       </a>
-      <p class="inventory-cta-note">29 doors recently stocked — prices and availability change weekly</p>
+      <p class="inventory-cta-note">23 doors recently stocked — prices and availability change weekly</p>
     </div>
   </div>
 </section>
@@ -1097,23 +1071,6 @@
         <h3>Local accountability</h3>
         <p>Family-owned, family-operated, same address since 1971. When something needs to be made right, the person who can fix it is on the property.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEO -->
-<section class="block video-section" id="video">
-  <div class="container">
-    <div class="section-head center">
-      <div class="eyebrow">See the Yard</div>
-      <h2>Meet <em>Norwood.</em></h2>
-      <p>Same location since 1971. Take a quick look around.</p>
-    </div>
-    <div class="video-wrap" data-video-id="DyjV37YhV3Q" role="button" tabindex="0" aria-label="Play Norwood Supply video">
-      <img class="video-poster" src="https://i.ytimg.com/vi/DyjV37YhV3Q/maxresdefault.jpg" alt="Norwood Supply — Jacksonville, FL" loading="lazy">
-      <button class="video-play" aria-label="Play video">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </button>
     </div>
   </div>
 </section>
@@ -1369,26 +1326,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  // Click-to-play YouTube embed (faster page load — iframe loads on demand)
-  document.querySelectorAll('.video-wrap').forEach(wrap => {
-    const load = () => {
-      const id = wrap.dataset.videoId;
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-      iframe.title = 'Norwood Supply video';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      iframe.allowFullscreen = true;
-      wrap.innerHTML = '';
-      wrap.appendChild(iframe);
-    };
-    wrap.addEventListener('click', load);
-    wrap.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
-    });
-  });
-</script>
 
 <script>
 // Desktop fallback for tel:/sms: links — shows the number in a toast since
