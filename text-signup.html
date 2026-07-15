@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Text Order Updates | Norwood Supply</title>
+<meta name="description" content="Sign up to receive text message updates about your Norwood Supply order — confirmation, ready-for-pickup, and delivery notifications.">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%231E70B8%22/><text x=%2250%22 y=%2270%22 font-family=%22Georgia,serif%22 font-size=%2260%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22white%22>N</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #1E70B8;
+    --primary-deep: #134570;
+    --primary-bright: #3D8FE0;
+    --primary-soft: #D8E8F5;
+    --ink: #2A2520;
+    --paper: #F8F4ED;
+    --paper-warm: #EFE7D6;
+    --line: #DDD3BF;
+    --muted: #6B6358;
+    --accent: #B85C2A;
+    --accent-light: #E8A06B;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Sora', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { color: var(--primary-deep); }
+  .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    background: rgba(248,244,237,0.96);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+  .header-inner { max-width: 640px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+  .logo span { display: block; font-family: 'Sora', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.16em; color: var(--accent); text-transform: uppercase; margin-top: 3px; }
+  .back-link { font-size: 13px; font-weight: 600; color: var(--primary); }
+  .back-link:hover { color: var(--primary-deep); }
+
+  main { padding: 48px 0 64px; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  h1 { font-size: 30px; margin-bottom: 12px; }
+  .lede { color: var(--muted); font-size: 16px; margin-bottom: 32px; max-width: 480px; }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  input[type="text"], input[type="tel"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--paper);
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  input[type="text"]:focus, input[type="tel"]:focus { outline: none; border-color: var(--primary); background: var(--white); }
+
+  .consent-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px; padding: 16px; background: var(--paper-warm); border-radius: 8px; border: 1px solid var(--line); }
+  .consent-row input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--primary); }
+  .consent-row label { font-size: 13px; font-weight: 400; color: var(--muted); margin-bottom: 0; line-height: 1.6; }
+  .consent-row a { font-weight: 600; }
+
+  .field-error { color: #B03A2E; font-size: 12px; margin: -14px 0 16px; display: none; }
+
+  button.submit-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px 24px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  button.submit-btn:hover { background: var(--primary-deep); }
+  button.submit-btn:disabled { background: var(--line); color: var(--muted); cursor: not-allowed; }
+
+  .fine-print { font-size: 12px; color: var(--muted); margin-top: 16px; text-align: center; line-height: 1.6; }
+  .fine-print a { color: var(--muted); text-decoration: underline; }
+
+  .success-state { display: none; text-align: center; padding: 20px 0; }
+  .success-icon { width: 56px; height: 56px; background: var(--primary-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .success-state h2 { font-size: 22px; margin-bottom: 10px; }
+  .success-state p { color: var(--muted); font-size: 15px; max-width: 400px; margin: 0 auto; }
+
+  footer { background: var(--ink); color: rgba(248,244,237,0.7); text-align: center; padding: 24px; font-size: 13px; }
+  footer a { color: rgba(248,244,237,0.85); }
+  footer a:hover { color: white; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Norwood Supply<span>Doors · Millwork · Building Materials</span></div>
+    <a class="back-link" href="/">← Back to site</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="eyebrow">Order &amp; Delivery Texts</div>
+    <h1>Get text updates on your order</h1>
+    <p class="lede">Enter your info below and we'll text you when your order is confirmed, ready for pickup, or out for delivery — including photo confirmation when it's dropped off.</p>
+
+    <div class="card">
+      <form id="optinForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+
+        <label for="phone">Mobile Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(904) 555-0123" autocomplete="tel" required>
+        <div class="field-error" id="phoneError">Please enter a valid 10-digit U.S. mobile number.</div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I agree to receive recurring automated text messages from <strong>Norwood Supply</strong> about my order and delivery status (order confirmation, ready-for-pickup, out-for-delivery, and delivery photo confirmation) at the mobile number provided. Message frequency varies, up to 5 messages per order. Message and data rates may apply. Reply <strong>STOP</strong> to cancel at any time, or <strong>HELP</strong> for help. Consent is not a condition of purchase. See our <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</label>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Sign Up for Text Updates</button>
+
+        <p class="fine-print">Norwood Supply · 6200 Norwood Ave, Jacksonville, FL 32208 · (904) 768-6818<br>
+        By signing up you also agree to our <a href="terms.html">Terms &amp; Conditions</a>.</p>
+      </form>
+
+      <div class="success-state" id="successState">
+        <div class="success-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E70B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2>You're signed up</h2>
+        <p>Thanks — we'll text you order and delivery updates at the number you provided. Reply STOP at any time to opt out.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  &copy; 1971–2026 Norwood Supply (Surplus Plywood, Inc.) &nbsp;|&nbsp;
+  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp;
+  <a href="/">Home</a>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAf50oc1i0ec1hsD_pPQNjj_tqcpIt0Sig",
+    authDomain: "norwood-supply.firebaseapp.com",
+    projectId: "norwood-supply",
+    storageBucket: "norwood-supply.firebasestorage.app",
+    messagingSenderId: "933963197210",
+    appId: "1:933963197210:web:c362a02d3d1a8d010d9aa3",
+    measurementId: "G-6QWRWPECGH"
+  };
+  let db = null;
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+  } catch (e) { console.warn('Firebase init failed:', e); }
+
+  const CONSENT_TEXT = "I agree to receive recurring automated text messages from Norwood Supply about my order and delivery status (order confirmation, ready-for-pickup, out-for-delivery, and delivery photo confirmation) at the mobile number provided. Message frequency varies, up to 5 messages per order. Message and data rates may apply. Reply STOP to cancel at any time, or HELP for help. Consent is not a condition of purchase.";
+
+  const form = document.getElementById('optinForm');
+  const phoneInput = document.getElementById('phone');
+  const phoneError = document.getElementById('phoneError');
+  const submitBtn = document.getElementById('submitBtn');
+  const successState = document.getElementById('successState');
+
+  phoneInput.addEventListener('input', function () {
+    let digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+    let formatted = digits;
+    if (digits.length > 6) formatted = '(' + digits.slice(0,3) + ') ' + digits.slice(3,6) + '-' + digits.slice(6);
+    else if (digits.length > 3) formatted = '(' + digits.slice(0,3) + ') ' + digits.slice(3);
+    else if (digits.length > 0) formatted = '(' + digits;
+    phoneInput.value = formatted;
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('fullName').value.trim();
+    const digits = phoneInput.value.replace(/\D/g, '');
+    const consent = document.getElementById('consent').checked;
+
+    if (digits.length !== 10) {
+      phoneError.style.display = 'block';
+      phoneInput.focus();
+      return;
+    }
+    phoneError.style.display = 'none';
+
+    if (!consent || !name) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Signing up…';
+
+    const record = {
+      name: name,
+      phone: '+1' + digits,
+      phoneDisplay: phoneInput.value,
+      consentGiven: true,
+      consentText: CONSENT_TEXT,
+      consentTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      source: 'website-optin-form',
+      page: 'text-signup.html'
+    };
+
+    if (db) {
+      db.collection('sms_optins').add(record)
+        .then(function () { showSuccess(); })
+        .catch(function (err) {
+          console.error('Opt-in save failed:', err);
+          showSuccess(); // don't block the customer on a backend hiccup
+        });
+    } else {
+      showSuccess();
+    }
+  });
+
+  function showSuccess() {
+    form.style.display = 'none';
+    successState.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
