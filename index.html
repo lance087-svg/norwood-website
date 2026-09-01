@@ -1355,7 +1355,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var isTel = link.href.indexOf('tel:') === 0;
     var raw = link.href.replace(/^(tel:|sms:)/, '').replace(/\D/g, '');
     var formatted = raw.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+    if (false && navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(formatted).catch(function(){});
     }
     showContactToast(isTel ? 'call' : 'text', formatted);
@@ -1370,7 +1370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     toast.innerHTML =
       '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#E8A06B;font-weight:700;margin-bottom:6px;">' + label + '</div>' +
       '<div style="font-family:\'Lora\',Georgia,serif;font-size:28px;font-weight:600;font-style:italic;color:#fff;letter-spacing:.01em;">' + number + '</div>' +
-      '<div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:8px;letter-spacing:.04em;">✓ Number copied to clipboard</div>';
+      '<div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:8px;letter-spacing:.04em;"></div>';
     toast.style.cssText =
       'position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(40px);' +
       'background:#2A2520;color:#fff;padding:22px 36px;border-radius:14px;' +
