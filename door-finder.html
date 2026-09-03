@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Door Finder — Norwood Supply</title>
+<meta name="description" content="Send Norwood Supply a picture of your door and we'll tell you what size and type you need. Jacksonville doors and millwork since 1971.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1E70B8; --blue-deep:#155A96; --navy:#17325C; --ink:#22303F; --muted:#5B6B7C;
+    --paper:#FFFFFF; --well:#EEF3F8; --well-line:#B9CADB; --rule:#D9E2EC;
+    --ok:#2B7A4B; --warn:#A8660F; --bad:#B33A2E; --ok-bg:#E8F3EC; --warn-bg:#FBF1E3; --bad-bg:#F8E7E5;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.5 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--blue)}
+  .wrap{max-width:560px;margin:0 auto;padding:20px 20px 80px}
+
+  header{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:14px;border-bottom:3px solid var(--blue)}
+  .brand{font-weight:700;color:var(--navy);text-decoration:none;font-size:18px;letter-spacing:.01em}
+  .brand small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+  header a.call{font-size:15px;text-decoration:none;font-weight:600}
+
+  h1{font-size:30px;line-height:1.15;color:var(--navy);margin:26px 0 8px;font-weight:700;letter-spacing:-.01em}
+  .lede{margin:0 0 26px;color:var(--muted);font-size:17px}
+
+  /* ---- door-shaped photo wells: the one bold thing on the page ---- */
+  .step{margin:0 0 30px}
+  .step h2{font-size:19px;margin:0 0 4px;color:var(--navy)}
+  .step .hint{margin:0 0 12px;color:var(--muted);font-size:15px}
+  .wells{display:flex;gap:14px;align-items:flex-start}
+  .well{position:relative;display:block;width:150px;aspect-ratio:36/80;border:2px dashed var(--well-line);border-radius:10px 10px 6px 6px;background:var(--well);cursor:pointer;overflow:hidden;flex:0 0 auto}
+  .well.main{width:186px}
+  .well input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;font-size:0}
+  .well .label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;text-align:center;color:var(--blue-deep);font-weight:600;font-size:16px;pointer-events:none}
+  .well .label .knob{width:14px;height:14px;border-radius:50%;background:var(--well-line);position:absolute;right:16px;top:50%;transform:translateY(-50%)}
+  .well .label svg{width:34px;height:34px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .well img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+  .well.has img{display:block}
+  .well.has{border-style:solid;border-color:var(--blue)}
+  .well.has .label{display:none}
+  .well .x{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(23,50,92,.85);color:#fff;font-size:18px;line-height:30px;text-align:center;display:none;cursor:pointer;z-index:2}
+  .well.has .x{display:block}
+  .well:focus-within{outline:3px solid var(--blue);outline-offset:2px}
+  .side{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0;padding-top:4px;font-size:15px;color:var(--muted)}
+  .side button.link{background:none;border:0;padding:0;color:var(--blue);font:inherit;font-weight:600;text-align:left;cursor:pointer;text-decoration:underline}
+  .well.small{width:110px}
+  .well.small .label{font-size:14px;padding:8px}
+  .well.hidden{display:none}
+
+  /* ---- questions ---- */
+  .q{margin:0 0 18px}
+  .q label.t{display:block;font-weight:600;color:var(--navy);margin-bottom:8px;font-size:17px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pills label{position:relative}
+  .pills input{position:absolute;opacity:0;width:0;height:0}
+  .pills span{display:inline-block;padding:10px 16px;border:1.5px solid var(--well-line);border-radius:999px;background:var(--paper);font-size:16px;cursor:pointer;color:var(--ink)}
+  .pills input:checked + span{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+  .pills input:focus-visible + span{outline:3px solid var(--blue);outline-offset:2px}
+  input.txt,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--well-line);border-radius:8px;font:inherit;color:var(--ink);background:var(--paper)}
+  input.txt:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,112,184,.18)}
+  textarea{min-height:76px;resize:vertical}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:420px){.two{grid-template-columns:1fr}}
+  .opt{font-weight:400;color:var(--muted);font-size:14px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+  .go{display:block;width:100%;padding:16px;border:0;border-radius:10px;background:var(--blue);color:#fff;font:700 19px "Source Sans 3",system-ui,sans-serif;cursor:pointer;margin-top:8px}
+  .go:hover{background:var(--blue-deep)}
+  .go[disabled]{background:#9DB8D3;cursor:default}
+  .fine{color:var(--muted);font-size:14px;margin:12px 0 0;text-align:center}
+  .err{display:none;margin:14px 0 0;padding:12px 14px;border-radius:8px;background:var(--bad-bg);color:var(--bad);font-weight:600}
+  .err.show{display:block}
+
+  /* ---- working ---- */
+  #working{display:none;text-align:center;padding:40px 0}
+  #working.show{display:block}
+  .spin{width:44px;height:44px;border:4px solid var(--rule);border-top-color:var(--blue);border-radius:50%;margin:0 auto 16px;animation:sp 1s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.spin{animation:none;border-top-color:var(--blue)}}
+  #working p{margin:0;color:var(--muted)}
+
+  /* ---- result ---- */
+  #result{display:none}
+  #result.show{display:block}
+  .verdict{margin:26px 0 18px;padding:20px 22px;border-radius:12px;background:var(--well);border-left:6px solid var(--blue)}
+  .verdict .size{font-size:34px;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+  .verdict .sub{margin-top:6px;font-size:17px;color:var(--ink)}
+  .verdict .call{color:var(--muted)}
+  .tag{display:inline-block;margin-top:12px;padding:4px 12px;border-radius:999px;font-size:14px;font-weight:600}
+  .tag.high{background:var(--ok-bg);color:var(--ok)} .tag.medium{background:var(--warn-bg);color:var(--warn)} .tag.low{background:var(--bad-bg);color:var(--bad)}
+  .reply{font-size:18px;line-height:1.55;margin:0 0 22px;white-space:pre-line}
+  .rows{border-top:1px solid var(--rule)}
+  .row{display:grid;grid-template-columns:128px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  .row b{color:var(--navy);font-weight:600}
+  .row ul{margin:0;padding-left:18px}
+  .fit{padding:14px 16px;border-radius:10px;margin:18px 0}
+  .fit.yes{background:var(--ok-bg)} .fit.maybe{background:var(--warn-bg)} .fit.no{background:var(--bad-bg)}
+  .fit b{display:block;margin-bottom:4px;color:var(--navy)}
+  .next{margin:26px 0 0;padding:18px 20px;border:1.5px solid var(--rule);border-radius:12px}
+  .next h3{margin:0 0 8px;font-size:18px;color:var(--navy)}
+  .next p{margin:0 0 10px}
+  .next .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .next .btns a{flex:1;min-width:130px;text-align:center;padding:12px;border-radius:8px;text-decoration:none;font-weight:700;background:var(--blue);color:#fff}
+  .next .btns a.alt{background:var(--paper);color:var(--blue);border:1.5px solid var(--blue)}
+  .again{background:none;border:0;color:var(--muted);font:inherit;text-decoration:underline;cursor:pointer;margin-top:22px;display:block}
+  footer{margin-top:40px;color:var(--muted);font-size:14px;border-top:1px solid var(--rule);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="https://norwoodsupply.com">Norwood Supply <small>Doors &amp; millwork, Jacksonville, since 1971</small></a>
+    <a class="call" href="tel:+19047686818">(904) 768-6818</a>
+  </header>
+
+  <!-- ================= FORM ================= -->
+  <div id="form">
+    <h1>Send us a picture of your door. We'll tell you what you need.</h1>
+    <p class="lede">Front door, back door, bedroom, closet — any of them. No measuring unless we ask.</p>
+
+    <section class="step">
+      <h2>Your current door</h2>
+      <p class="hint">Stand back a few feet so we can see the whole door and some of the wall around it.</p>
+      <div class="wells">
+        <label class="well main" id="wellMain">
+          <input type="file" accept="image/*" id="fileMain">
+          <span class="label">
+            <svg viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16"/><path d="M2 21h20"/><circle cx="15.5" cy="12" r="1"/></svg>
+            Take or choose a photo
+            <span class="knob"></span>
+          </span>
+          <img alt="" id="imgMain">
+          <button type="button" class="x" data-clear="Main" aria-label="Remove photo">×</button>
+        </label>
+        <div class="side">
+          <label class="well small hidden" id="wellMain2">
+            <input type="file" accept="image/*" id="fileMain2">
+            <span class="label">Another angle</span>
+            <img alt="" id="imgMain2">
+            <button type="button" class="x" data-clear="Main2" aria-label="Remove photo">×</button>
+          </label>
+          <button type="button" class="link" id="addAngle">Add another angle</button>
+          <span>Helpful: one from inside, one from outside, or a close-up of the hinge side.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>The door you'd like <span class="opt">(if you have one in mind)</span></h2>
+      <p class="hint">A screenshot from our <a href="https://norwoodsupply.com/stock" target="_blank" rel="noopener">stock page</a> or anywhere else. We'll tell you if it fits your opening.</p>
+      <div class="wells">
+        <label class="well" id="wellWant">
+          <input type="file" accept="image/*" id="fileWant">
+          <span class="label">
+            <svg viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16"/><path d="M2 21h20"/><path d="M8 8h8M8 12h8"/></svg>
+            Add a photo of the new door
+            <span class="knob"></span>
+          </span>
+          <img alt="" id="imgWant">
+          <button type="button" class="x" data-clear="Want" aria-label="Remove photo">×</button>
+        </label>
+        <div class="side">
+          <span>Not sure yet? Skip this and we'll suggest options that fit.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>Three quick taps</h2>
+      <div class="q">
+        <label class="t">Where is this door?</label>
+        <div class="pills" id="qLoc">
+          <label><input type="radio" name="loc" value="exterior door (opens to outside)"><span>Outside door</span></label>
+          <label><input type="radio" name="loc" value="interior door"><span>Inside door</span></label>
+          <label><input type="radio" name="loc" value="not sure"><span>Not sure</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <label class="t">About how old is the home?</label>
+        <div class="pills" id="qAge">
+          <label><input type="radio" name="age" value="after 1985"><span>After 1985</span></label>
+          <label><input type="radio" name="age" value="1960 to 1985"><span>1960 – 1985</span></label>
+          <label><input type="radio" name="age" value="before 1960"><span>Before 1960</span></label>
+          <label><input type="radio" name="age" value="not sure"><span>Not sure</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <label class="t" for="addr">Street address <span class="opt">(optional — the neighborhood tells us a lot)</span></label>
+        <input class="txt" id="addr" type="text" autocomplete="street-address" placeholder="e.g. 1234 Post St, Jacksonville">
+      </div>
+      <div class="q">
+        <label class="t" for="notes">Anything else? <span class="opt">(optional)</span></label>
+        <textarea id="notes" placeholder="Rough size if you know it, what's wrong with the current door, how soon you need it…"></textarea>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>So we can follow up</h2>
+      <div class="two">
+        <div class="q"><label class="t" for="name">Your name</label><input class="txt" id="name" type="text" autocomplete="name"></div>
+        <div class="q"><label class="t" for="contact">Phone or email</label><input class="txt" id="contact" type="text" autocomplete="tel" inputmode="email"></div>
+      </div>
+      <input class="hp" id="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="go" id="go" type="button">Tell me what I need</button>
+      <p class="fine">Takes about 20 seconds. A real person at Norwood sees every request.</p>
+      <div class="err" id="err" role="alert"></div>
+    </section>
+  </div>
+
+  <!-- ================= WORKING ================= -->
+  <div id="working"><div class="spin"></div><p id="workMsg">Looking at your door…</p></div>
+
+  <!-- ================= RESULT ================= -->
+  <div id="result">
+    <h1>Here's what we see</h1>
+    <div class="verdict">
+      <div class="size" id="rSize"></div>
+      <div class="sub" id="rSub"></div>
+      <span class="tag" id="rTag"></span>
+    </div>
+    <p class="reply" id="rReply"></p>
+    <div id="rFit"></div>
+    <div class="rows" id="rRows"></div>
+    <div class="next">
+      <h3>What happens next</h3>
+      <p>We've saved your photos and details. Someone from Norwood will follow up, usually the same business day. Want to talk now?</p>
+      <div class="btns">
+        <a href="tel:+19047686818">Call (904) 768-6818</a>
+        <a class="alt" href="sms:+19042386383">Text (904) 238-6383</a>
+      </div>
+      <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">6200 Norwood Ave, Jacksonville · Mon–Fri 7:30–5 · Sat 8:30–12</p>
+    </div>
+    <button class="again" id="again" type="button">Check another door</button>
+  </div>
+
+  <footer>Norwood Supply · Family-owned since 1971 · <a href="https://norwoodsupply.com">norwoodsupply.com</a></footer>
+</div>
+
+<script>
+// ============================================================
+// SETUP: paste the doorFinder Cloud Function URL between the quotes.
+// It looks like https://doorfinder-xxxxxxxx-uc.a.run.app
+var FUNCTION_URL = "https://doorfinder-933963197210.us-central1.run.app";
+// ============================================================
+
+var photos = { Main:null, Main2:null, Want:null };   // {data, media_type}
+
+function $(id){ return document.getElementById(id); }
+
+// Shrink the photo on the phone before upload: keeps requests small and fast.
+function shrink(file){
+  return new Promise(function(resolve, reject){
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function(){
+      var MAX = 1400, w = img.naturalWidth, h = img.naturalHeight;
+      var s = Math.min(1, MAX / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.round(w*s); c.height = Math.round(h*s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      var dataUrl = c.toDataURL('image/jpeg', 0.82);
+      resolve({ data: dataUrl.split(',')[1], media_type:'image/jpeg', preview: dataUrl });
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); reject(new Error("That file isn't a photo we can read. Try a JPG or PNG.")); };
+    img.src = url;
+  });
+}
+
+function wire(key){
+  var input = $('file'+key), well = $('well'+key), img = $('img'+key);
+  input.addEventListener('change', async function(){
+    var f = input.files && input.files[0];
+    if (!f) return;
+    try{
+      var p = await shrink(f);
+      photos[key] = { data:p.data, media_type:p.media_type };
+      img.src = p.preview;
+      well.classList.add('has');
+      hideErr();
+    }catch(e){ showErr(e.message); }
+  });
+}
+['Main','Main2','Want'].forEach(wire);
+
+document.querySelectorAll('[data-clear]').forEach(function(b){
+  b.addEventListener('click', function(ev){
+    ev.preventDefault(); ev.stopPropagation();
+    var key = b.getAttribute('data-clear');
+    photos[key] = null;
+    $('file'+key).value = '';
+    $('img'+key).removeAttribute('src');
+    $('well'+key).classList.remove('has');
+  });
+});
+
+$('addAngle').addEventListener('click', function(){
+  $('wellMain2').classList.remove('hidden');
+  this.style.display = 'none';
+});
+
+function val(name){ var el = document.querySelector('input[name="'+name+'"]:checked'); return el ? el.value : ''; }
+function showErr(m){ var e=$('err'); e.textContent = m; e.classList.add('show'); e.scrollIntoView({block:'nearest'}); }
+function hideErr(){ $('err').classList.remove('show'); }
+
+$('go').addEventListener('click', async function(){
+  hideErr();
+  if (!photos.Main){ showErr("Add a photo of your current door first — that's the one thing we need."); return; }
+  var name = $('name').value.trim(), contact = $('contact').value.trim();
+  if (!name || !contact){ showErr("Add your name and a phone or email so we can follow up."); return; }
+  if (FUNCTION_URL.indexOf('http') !== 0){ showErr("This page isn't connected yet. Call us at (904) 768-6818 or text your photo to (904) 238-6383."); return; }
+
+  var body = {
+    photos: [photos.Main].concat(photos.Main2 ? [photos.Main2] : []),
+    wanted: photos.Want,
+    location: val('loc'), home_age: val('age'),
+    address: $('addr').value.trim(), notes: $('notes').value.trim(),
+    name: name, contact: contact, website: $('website').value
+  };
+
+  $('form').style.display = 'none';
+  $('working').classList.add('show');
+  var msgs = ["Looking at your door…","Checking the size and style…","Reading the trim and the wall around it…","Putting the answer together…"];
+  var i = 0; var t = setInterval(function(){ i = (i+1) % msgs.length; $('workMsg').textContent = msgs[i]; }, 4000);
+  window.scrollTo(0,0);
+
+  try{
+    var resp = await fetch(FUNCTION_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    var data = null;
+    try{ data = await resp.json(); }catch(_){}
+    if (!resp.ok || !data || data.error){ throw new Error((data && data.error) || ("HTTP " + resp.status)); }
+    render(data);
+  }catch(e){
+    clearInterval(t);
+    $('working').classList.remove('show');
+    $('form').style.display = '';
+    var m = /Failed to fetch|NetworkError|Load failed/i.test(e.message)
+      ? "We couldn't reach Norwood right now. Check your signal and try again, or text the photo to (904) 238-6383."
+      : e.message;
+    showErr(m);
+    return;
+  }
+  clearInterval(t);
+  $('working').classList.remove('show');
+  $('result').classList.add('show');
+  window.scrollTo(0,0);
+});
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function row(label, v){
+  if (v == null || v === '' || (Array.isArray(v) && !v.length)) return '';
+  var body = Array.isArray(v) ? '<ul>' + v.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('') + '</ul>' : esc(v);
+  return '<div class="row"><b>'+esc(label)+'</b><div>'+body+'</div></div>';
+}
+
+function render(r){
+  var w = r.width_in || '?', h = r.height_in || '?';
+  $('rSize').textContent = w + '" × ' + h + '"';
+  var sub = [r.config, r.unit_rec ? r.unit_rec.split(/[.;—-]/)[0] : ''].filter(Boolean).join(' · ');
+  $('rSub').innerHTML = esc(sub) + (r.call_size ? ' <span class="call">(we call that ' + esc(r.call_size) + ')</span>' : '');
+  var conf = r.confidence || 'low';
+  var tag = $('rTag'); tag.className = 'tag ' + conf;
+  tag.textContent = conf === 'high' ? 'Measured from your photo' : conf === 'medium' ? 'Confident read — standard size' : 'Best read — we\'ll confirm before ordering';
+
+  $('rReply').textContent = r.customer_reply || '';
+
+  var fit = '';
+  if (r.wanted && r.wanted.fits){
+    var f = r.wanted.fits;
+    var head = f === 'yes' ? 'The door you picked works in this opening' : f === 'maybe' ? 'The door you picked can work, with a small change' : 'The door you picked won\'t drop into this opening as-is';
+    fit = '<div class="fit '+esc(f)+'"><b>'+head+'</b>'+esc(r.wanted.fit_note || '')+'</div>';
+  }
+  $('rFit').innerHTML = fit;
+
+  var age = r.home_age_read && r.home_age_read !== 'unclear'
+    ? ({'pre-1960':'Looks like an older home (before 1960)','1960-1985':'Looks like a 1960s–80s home','post-1985':'Looks like a newer home (after 1985)'})[r.home_age_read] : '';
+  if (age && r.home_age_signals && r.home_age_signals.length) age += ' — ' + r.home_age_signals.slice(0,3).join(', ');
+  var cut = r.cutdown_risk ? ({low:'Low — standard size, no extra measuring',medium:'Possible — one tape photo will settle it',high:'Likely — we need a tape photo before ordering'})[r.cutdown_risk] : '';
+
+  $('rRows').innerHTML =
+    row('Style', [r.style, r.material].filter(Boolean).join(' · ')) +
+    row('Swing', r.swing) +
+    row('Your home', age) +
+    row('Odd size?', cut) +
+    row('Heads up', r.red_flags) +
+    row('We still need', r.need_from_customer);
+}
+
+$('again').addEventListener('click', function(){ location.reload(); });
+</script>
+</body>
+</html>
