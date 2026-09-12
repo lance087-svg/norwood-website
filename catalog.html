@@ -261,9 +261,13 @@ h1, h2, h3 { font-family: 'Lora', Georgia, serif; font-weight: 600; line-height:
 #contact-dialog {margin:auto;width:min(520px,90vw);padding:28px;border:1px solid #ddd3bf;border-radius:14px;background:#f8f4ed;color:#2a2520;}
 #contact-dialog::backdrop {background:rgba(0,0,0,.55);}
 #contact-dialog p {margin:16px 0;font-size:20px;}
-#contact-message {width:100%;margin:8px 0 16px;padding:10px;font:inherit;}
-#contact-close {padding:12px 20px;background:#1e70b8;color:white;border:0;border-radius:6px;font:inherit;cursor:pointer;}
+#inquiry-product, #inquiry-message, #inquiry-name, #inquiry-contact {width:100%;margin:8px 0 16px;padding:10px;font:inherit;}
+#inquiry-send, #contact-close {padding:12px 20px;background:#1e70b8;color:white;border:0;border-radius:6px;font:inherit;cursor:pointer;}
 @media(max-width:700px){.nav .container{flex-wrap:wrap;gap:12px}.nav ul{gap:12px;flex-wrap:wrap}.filter-tabs{flex-wrap:wrap}}
+#inquiry-error {color:#9b261e;}
+#contact-dialog label {display:block;margin-top:12px;}
+#contact-dialog #inquiry-reply-help {font-size:14px;}
+#inquiry-send:disabled {opacity:.6;}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -737,32 +741,28 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
 </script>
 
 <dialog id="contact-dialog" aria-labelledby="contact-title">
-  <h2 id="contact-title">Contact Norwood Supply</h2>
-  <p id="contact-number"></p>
-  <label for="contact-message">Your inquiry — copy this into your message</label>
-  <textarea id="contact-message" rows="5" readonly></textarea>
+  <h2 id="contact-title">Request info about this door</h2>
+  <p id="contact-number" hidden>Call (904) 768-6818</p>
+  <form id="catalog-inquiry-form">
+    <label for="inquiry-product">Selected door</label>
+    <textarea id="inquiry-product" rows="3" readonly></textarea>
+    <label for="inquiry-name">Your name</label>
+    <input id="inquiry-name" name="name" autocomplete="name" maxlength="100" required>
+    <label for="inquiry-contact">Phone number or email</label>
+    <input id="inquiry-contact" name="contact" maxlength="254" required aria-describedby="inquiry-reply-help">
+    <p id="inquiry-reply-help">Norwood will reply using the phone number or email you enter here.</p>
+    <label for="inquiry-message">What would you like to know?</label>
+    <textarea id="inquiry-message" name="message" rows="3" maxlength="2000">Is this door available?</textarea>
+    <div hidden aria-hidden="true"><label>Website<input name="website" id="inquiry-website" tabindex="-1" autocomplete="off"></label></div>
+    <p id="inquiry-error" role="alert" hidden></p>
+    <button type="submit" id="inquiry-send">Send Inquiry</button>
+    <p><small>Your details are used to respond to this inquiry. <a href="/privacy.html">Privacy policy</a></small></p>
+  </form>
+  <p id="inquiry-success" role="status" hidden></p>
   <button type="button" id="contact-close">Close</button>
 </dialog>
-<script>
-(function () {
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
-  const panel = document.getElementById('contact-dialog');
-  document.getElementById('contact-close').addEventListener('click', () => panel.close());
-  document.addEventListener('click', function (event) {
-    const link = event.target.closest('a[href^="tel:"],a[href^="sms:"]');
-    if (!link || !panel.showModal) return;
-    event.preventDefault();
-    const href = link.getAttribute('href');
-    const sms = href.startsWith('sms:');
-    document.getElementById('contact-number').textContent = sms ? 'Text (904) 403-5261' : 'Call (904) 768-6818';
-    const message = document.getElementById('contact-message');
-    message.value = new URLSearchParams(href.split('?')[1] || '').get('body') || 'Hi Norwood Supply, I would like help choosing a door.';
-    message.hidden = !sms;
-    document.querySelector('label[for="contact-message"]').hidden = !sms;
-    panel.showModal();
-  });
-})();
-</script>
+<!-- Enable only after an inquiry endpoint has been deployed and delivery verified. -->
+<script src="catalog-inquiry.js" data-endpoint=""></script>
 
 </body>
 </html>
