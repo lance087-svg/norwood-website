@@ -148,6 +148,7 @@
           <label for="consent">I agree to receive recurring automated text messages from <strong>Norwood Supply</strong> about my order and delivery status (order confirmation, ready-for-pickup, out-for-delivery, and delivery photo confirmation) at the mobile number provided. Message frequency varies, up to 5 messages per order. Message and data rates may apply. Reply <strong>STOP</strong> to cancel at any time, or <strong>HELP</strong> for help. Consent is not a condition of purchase. See our <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</label>
         </div>
 
+        <p id="saveError" role="alert" hidden style="color:#9b261e;margin:12px 0"></p>
         <button type="submit" class="submit-btn" id="submitBtn">Sign Up for Text Updates</button>
 
         <p class="fine-print">Norwood Supply · 6200 Norwood Ave, Jacksonville, FL 32208 · (904) 768-6818<br>
@@ -222,6 +223,8 @@
 
     if (!consent || !name) return;
 
+    document.getElementById('saveError').hidden = true;
+    if (!db) { showSaveError(); return; }
     submitBtn.disabled = true;
     submitBtn.textContent = 'Signing up…';
 
@@ -241,12 +244,20 @@
         .then(function () { showSuccess(); })
         .catch(function (err) {
           console.error('Opt-in save failed:', err);
-          showSuccess(); // don't block the customer on a backend hiccup
+          showSaveError();
         });
     } else {
-      showSuccess();
+      showSaveError();
     }
   });
+
+  function showSaveError() {
+    const error = document.getElementById('saveError');
+    error.textContent = "We couldn't save your signup. Your details are still here — please try again, or call (904) 768-6818 for help.";
+    error.hidden = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Try Again';
+  }
 
   function showSuccess() {
     form.style.display = 'none';

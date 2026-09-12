@@ -914,8 +914,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container header-inner">
     <a href="#" class="logo">Norwood Supply<span>Doors · Millwork · Building Materials</span></a>
     <nav>
-      <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
-      <ul>
+      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Menu">☰</button>
+      <ul id="primary-menu">
         <li><a href="#products">Products</a></li>
         <li><a href="catalog.html">Inventory</a></li>
         <li><a href="door-finder.html" class="nav-finder">📷 Door Finder</a></li>
@@ -1401,5 +1401,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script>
+const menuButton = document.querySelector('.menu-toggle');
+const primaryMenu = document.getElementById('primary-menu');
+function closeMenu(){primaryMenu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}
+menuButton.addEventListener('click',()=>{const open=primaryMenu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});
+primaryMenu.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape' && primaryMenu.classList.contains('open')){closeMenu();menuButton.focus();}});
+</script>
 </body>
 </html>
