@@ -1,1 +1,171 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Door Inventory — Norwood Supply</title><link rel="canonical" href="https://www.norwoodsupply.com/catalog.html"><meta http-equiv="refresh" content="0;url=/catalog.html"></head><body><p>This page has moved. <a href="/catalog.html">Open Door Inventory</a>.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Stock Now — Norwood Supply, Jacksonville FL</title>
+<meta name="description" content="Live list of doors in stock right now at Norwood Supply, 6200 Norwood Ave, Jacksonville FL — prices, availability, and salvage deals. Call or text to hold one.">
+<link rel="canonical" href="https://www.norwoodsupply.com/stock/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1E70B8;--primary-deep:#134570;--ink:#2A2520;--paper:#F8F4ED;--paper-warm:#EFE7D6;--accent:#B85C2A;--accent-light:#E8A06B;--white:#FFFFFF;--gray-light:#E6DFD0;--gray-mid:#8B8378;--green:#2E7D32;--amber:#B26A00}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sora',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--primary);text-decoration:none}
+h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:600;line-height:1.2}
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+.header{background:var(--paper);border-bottom:1px solid var(--gray-light);position:sticky;top:0;z-index:100;padding:14px 0}
+.header-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-family:'Lora',Georgia,serif;font-size:24px;font-weight:700;color:var(--ink)}
+.logo em{font-style:italic;color:var(--primary);font-weight:600}
+.nav ul{display:flex;gap:20px;list-style:none;align-items:center;flex-wrap:wrap}
+.nav a{color:var(--ink);font-weight:500;font-size:14px}
+.nav .nav-cta{background:var(--primary);color:#fff;padding:9px 18px;border-radius:30px;font-weight:600}
+.hero{background:linear-gradient(160deg,var(--paper-warm),var(--paper));padding:40px 0 24px;text-align:center}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.hero h1{font-size:clamp(28px,5vw,44px)}
+.hero p{color:var(--gray-mid);margin-top:8px;font-size:15px}
+.live{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;color:var(--green);font-weight:600}
+.live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);animation:p 2s infinite}
+@keyframes p{50%{opacity:.3}}
+.controls{position:sticky;top:64px;z-index:50;background:var(--paper);padding:12px 0;border-bottom:1px solid var(--gray-light)}
+.controls .container{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 240px;padding:11px 14px;border:1px solid var(--gray-light);border-radius:10px;font:inherit;font-size:15px;background:#fff}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--gray-light);background:#fff;border-radius:20px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.count{font-size:13px;color:var(--gray-mid);margin-left:auto}
+main{padding:20px 0 60px}
+.section-title{display:flex;align-items:baseline;gap:10px;margin:22px 0 12px;font-size:22px}
+.section-title small{font-family:'Sora';font-size:13px;color:var(--gray-mid);font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--gray-light);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:3/4;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;color:var(--gray-mid);font-size:13px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:contain;background:#fff}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.desc{font-size:14px;font-weight:500}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto}
+.price{font-family:'Lora',serif;font-size:22px;font-weight:700}
+.pill{font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.pill.in{background:#E7F3E8;color:var(--green)}
+.pill.low{background:#FFF1DC;color:var(--amber)}
+.pill.call{background:#E8F0F8;color:var(--primary-deep)}
+.salv{font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:2px 8px;border-radius:10px;margin-right:6px}
+.hold{display:block;text-align:center;padding:9px;border-radius:8px;background:var(--primary);color:#fff;font-weight:600;font-size:13px}
+.empty{padding:40px;text-align:center;color:var(--gray-mid)}
+.note{margin-top:30px;background:#fff;border:1px solid var(--gray-light);border-radius:12px;padding:18px;font-size:14px;color:var(--ink)}
+.note a{font-weight:600}
+footer{background:var(--ink);color:var(--paper);padding:24px 0;font-size:13px;text-align:center}
+footer a{color:var(--accent-light)}
+@media(max-width:600px){.controls{top:0;position:static}.grid{grid-template-columns:1fr 1fr;gap:10px}.price{font-size:18px}.desc{font-size:13px}.nav ul{gap:12px}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Norwood <em>Supply</em></a>
+    <nav class="nav"><ul>
+      <li><a href="/catalog.html">Catalog</a></li>
+      <li><a href="/stock/" style="color:var(--primary)">In Stock</a></li>
+      <li><a href="/door-finder.html">Door Finder</a></li>
+      <li><a href="tel:9047686818" class="nav-cta">Call (904) 768-6818</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">In Stock Now</div>
+    <h1>Doors on the lot today</h1>
+    <p>Live from our yard at 6200 Norwood Ave, Jacksonville. Call or text to hold one.</p>
+    <div class="live" id="live">Loading live stock…</div>
+  </div>
+</section>
+
+<div class="controls">
+  <div class="container">
+    <input class="search" id="q" type="search" placeholder="Search: 36, fiberglass, left hand, 6-panel…" autocomplete="off">
+    <div class="chips" id="chips">
+      <button class="chip on" data-f="all">All</button>
+      <button class="chip" data-f="ext">Exterior</button>
+      <button class="chip" data-f="int">Interior</button>
+      <button class="chip" data-f="salv">Salvage deals</button>
+    </div>
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<main class="container" id="main"><div class="empty">Loading…</div></main>
+
+<div class="container">
+  <div class="note">Don't see your size? Most doors can be special ordered in about 1–2 weeks. <a href="/door-finder.html">Send us a photo with Door Finder</a> or call <a href="tel:9047686818">(904) 768-6818</a>. Stock moves fast — availability is confirmed when you call.</div>
+</div>
+<br>
+<footer><div class="container">Norwood Supply · 6200 Norwood Ave, Jacksonville, FL 32208 · <a href="tel:9047686818">(904) 768-6818</a> · Family owned since 1971</div></footer>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script>
+firebase.initializeApp({apiKey:"AIzaSyAf50oc1i0ec1hsD_pPQNjj_tqcpIt0Sig",authDomain:"norwood-supply.firebaseapp.com",projectId:"norwood-supply",storageBucket:"norwood-supply.firebasestorage.app",messagingSenderId:"933963197210",appId:"1:933963197210:web:c362a02d3d1a8d010d9aa3"});
+var db=firebase.firestore();
+var ITEMS=[],SALV=[],FILTER='all',Q='';
+var PHONE='9047686818';
+
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function money(p){var n=parseFloat(p)||0;return '$'+n.toLocaleString(undefined,{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})}
+// Availability tiers instead of exact counts (counts are still being firmed up)
+function tier(n){n=parseInt(n)||0;if(n>=4)return['in','In stock'];if(n>=2)return['low','Low stock'];return['call','Last one — call']}
+function isSalv(d){return d.isSalvage===true||d.type==='salvage'||!!d.salvageType||String(d.sku||'').indexOf('SALVAGE-')===0}
+function kind(d){var s=(d.sku||d._id||'')+' '+(d.description||'');if(/DR-INT|interior|bifold|slab/i.test(s)&&!/DR-EXT|exterior/i.test(s))return'int';return'ext'}
+function photo(d,salv){var r=salv?d.photo:(d.photoBase64||d.thumbnail);if(!r)return'';return salv||String(r).indexOf('data:')===0?r:'data:image/jpeg;base64,'+r}
+
+function card(d,salv){
+  var title=salv?(d.title||d.description):d.description;
+  var t=tier(salv?d.qty:d.qoh),src=photo(d,salv);
+  var ref=salv?('Salvage #'+(d.salvNo||'')):('Item '+(d.itemNo||d.sku||''));
+  var body=encodeURIComponent('Hi Norwood, is this still available? '+ref+' — '+title);
+  return '<div class="card"><div class="ph">'+(src?'<img loading="lazy" alt="'+esc(title)+'" src="'+esc(src)+'">':'Photo coming soon')+'</div>'
+    +'<div class="body"><div class="desc">'+(salv?'<span class="salv">Salvage</span>':'')+esc(title)+'</div>'
+    +(salv&&d.condition?'<div style="font-size:12px;color:var(--gray-mid)">Condition: '+esc(d.condition)+'</div>':'')
+    +'<div class="row"><span class="price">'+money(d.price)+'</span><span class="pill '+t[0]+'">'+t[1]+'</span></div>'
+    +'<a class="hold" href="sms:+1'+PHONE+'?&body='+body+'">Text to hold</a></div></div>';
+}
+
+function render(){
+  var terms=Q.toLowerCase().split(/\s+/).filter(Boolean);
+  function m(d){var h=[d.description,d.title,d.itemNo,d.salvNo,d.sku,d.condition].join(' ').toLowerCase();return terms.every(function(t){return h.indexOf(t)>=0})}
+  var it=ITEMS.filter(m).filter(function(d){return FILTER==='all'||FILTER===kind(d)});
+  var sv=(FILTER==='all'||FILTER==='salv')?SALV.filter(m):[];
+  if(FILTER==='salv')it=[];
+  var ext=it.filter(function(d){return kind(d)==='ext'}),int=it.filter(function(d){return kind(d)==='int'});
+  var h='';
+  function sec(name,list,salv){if(!list.length)return;h+='<h2 class="section-title">'+name+' <small>'+list.length+' item'+(list.length>1?'s':'')+'</small></h2><div class="grid">'+list.map(function(d){return card(d,salv)}).join('')+'</div>'}
+  sec('Exterior doors',ext,false);sec('Interior doors',int,false);sec('Salvage &amp; B-grade deals',sv,true);
+  document.getElementById('main').innerHTML=h||'<div class="empty">Nothing matches that search right now — call us, we may have it or can order it.</div>';
+  var n=it.length+sv.length;document.getElementById('count').textContent=n+' showing';
+}
+
+db.collection('norwood').onSnapshot(function(snap){
+  var a=[],s=[];
+  snap.forEach(function(doc){
+    if(doc.id.indexOf('__')===0)return;
+    var d=doc.data();d._id=doc.id;
+    if(d.removed)return;
+    if(isSalv(d)){if(d.sold||(parseInt(d.qty)||0)<=0)return;s.push(d)}
+    else{if((parseInt(d.qoh)||0)<=0)return;a.push(d)}
+  });
+  a.sort(function(x,y){return(x.description||'').localeCompare(y.description||'')});
+  s.sort(function(x,y){return(Number(y.salvNo)||0)-(Number(x.salvNo)||0)});
+  ITEMS=a;SALV=s;render();
+  document.getElementById('live').textContent='Live · updated '+new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
+},function(){document.getElementById('live').textContent='Could not load live stock — please call (904) 768-6818'});
+
+document.getElementById('q').addEventListener('input',function(e){Q=e.target.value;render()});
+document.getElementById('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;FILTER=b.dataset.f;[].forEach.call(document.querySelectorAll('.chip'),function(c){c.classList.toggle('on',c===b)});render()});
+var p=new URLSearchParams(location.search);if(p.get('q')){Q=p.get('q');document.getElementById('q').value=Q}
+if(p.get('f')){var c=document.querySelector('.chip[data-f="'+p.get('f')+'"]');if(c)c.click()}
+</script>
+</body>
+</html>
