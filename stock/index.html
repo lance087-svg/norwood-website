@@ -57,6 +57,17 @@ main{padding:20px 0 60px}
 .empty{padding:40px;text-align:center;color:var(--gray-mid)}
 .note{margin-top:30px;background:#fff;border:1px solid var(--gray-light);border-radius:12px;padding:18px;font-size:14px;color:var(--ink)}
 .note a{font-weight:600}
+.picked .controls{display:none}
+.picked .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.pickbar{display:none;background:#fff;border:1px solid var(--gray-light);border-radius:12px;padding:12px 16px;margin-top:16px;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;font-size:14px}
+.picked .pickbar{display:flex}
+.pickbar a{font-weight:600}
+.ph img{cursor:zoom-in}
+.lb{position:fixed;inset:0;background:rgba(20,16,12,.92);display:none;align-items:center;justify-content:center;z-index:500;padding:16px;flex-direction:column;gap:10px}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain;background:#fff;border-radius:8px}
+.lb .cap{color:#fff;font-size:14px;text-align:center;max-width:700px}
+.lb .x{position:absolute;top:10px;right:14px;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;line-height:1}
 footer{background:var(--ink);color:var(--paper);padding:24px 0;font-size:13px;text-align:center}
 footer a{color:var(--accent-light)}
 @media(max-width:600px){.controls{top:0;position:static}.grid{grid-template-columns:1fr 1fr;gap:10px}.price{font-size:18px}.desc{font-size:13px}.nav ul{gap:12px}}
@@ -97,12 +108,14 @@ footer a{color:var(--accent-light)}
   </div>
 </div>
 
+<div class="container"><div class="pickbar"><span id="pickmsg">Doors picked for you</span><a href="/stock/">See everything in stock →</a></div></div>
 <main class="container" id="main"><div class="empty">Loading…</div></main>
 
 <div class="container">
   <div class="note">Don't see your size? Most doors can be special ordered in about 1–2 weeks. <a href="/door-finder.html">Send us a photo with Door Finder</a> or call <a href="tel:9047686818">(904) 768-6818</a>. Stock moves fast — availability is confirmed when you call.</div>
 </div>
 <br>
+<div class="lb" id="lb"><button class="x" aria-label="Close">×</button><img id="lbimg" alt=""><div class="cap" id="lbcap"></div></div>
 <footer><div class="container">Norwood Supply · 6200 Norwood Ave, Jacksonville, FL 32208 · <a href="tel:9047686818">(904) 768-6818</a> · Family owned since 1971</div></footer>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -111,6 +124,10 @@ footer a{color:var(--accent-light)}
 firebase.initializeApp({apiKey:"AIzaSyAf50oc1i0ec1hsD_pPQNjj_tqcpIt0Sig",authDomain:"norwood-supply.firebaseapp.com",projectId:"norwood-supply",storageBucket:"norwood-supply.firebasestorage.app",messagingSenderId:"933963197210",appId:"1:933963197210:web:c362a02d3d1a8d010d9aa3"});
 var db=firebase.firestore();
 var ITEMS=[],SALV=[],FILTER='all',Q='';
+// ?pick=162,167,s02504 — a staff-picked list (itemNo, s+salvNo, or doc id)
+var PICK=(new URLSearchParams(location.search).get('pick')||'').split(',').map(function(t){return t.trim()}).filter(Boolean);
+function tokenOf(d,salv){return salv?(d.salvNo?'s'+d.salvNo:d._id):(d.itemNo!=null&&d.itemNo!==''?String(d.itemNo):d._id)}
+function picked(d,salv){return PICK.indexOf(tokenOf(d,salv))>=0}
 var PHONE='9047686818';
 
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -126,7 +143,7 @@ function card(d,salv){
   var t=tier(salv?d.qty:d.qoh),src=photo(d,salv);
   var ref=salv?('Salvage #'+(d.salvNo||'')):('Item '+(d.itemNo||d.sku||''));
   var body=encodeURIComponent('Hi Norwood, is this still available? '+ref+' — '+title);
-  return '<div class="card"><div class="ph">'+(src?'<img loading="lazy" alt="'+esc(title)+'" src="'+esc(src)+'">':'Photo coming soon')+'</div>'
+  return '<div class="card"><div class="ph">'+(src?'<img loading="lazy" alt="'+esc(title)+'" data-cap="'+esc(title+' — '+money(d.price))+'" src="'+esc(src)+'">':'Photo coming soon')+'</div>'
     +'<div class="body"><div class="desc">'+(salv?'<span class="salv">Salvage</span>':'')+esc(title)+'</div>'
     +(salv&&d.condition?'<div style="font-size:12px;color:var(--gray-mid)">Condition: '+esc(d.condition)+'</div>':'')
     +'<div class="row"><span class="price">'+money(d.price)+'</span><span class="pill '+t[0]+'">'+t[1]+'</span></div>'
@@ -139,10 +156,12 @@ function render(){
   var it=ITEMS.filter(m).filter(function(d){return FILTER==='all'||FILTER===kind(d)});
   var sv=(FILTER==='all'||FILTER==='salv')?SALV.filter(m):[];
   if(FILTER==='salv')it=[];
+  if(PICK.length){it=it.filter(function(d){return picked(d,false)});sv=sv.filter(function(d){return picked(d,true)})}
   var ext=it.filter(function(d){return kind(d)==='ext'}),int=it.filter(function(d){return kind(d)==='int'});
   var h='';
   function sec(name,list,salv){if(!list.length)return;h+='<h2 class="section-title">'+name+' <small>'+list.length+' item'+(list.length>1?'s':'')+'</small></h2><div class="grid">'+list.map(function(d){return card(d,salv)}).join('')+'</div>'}
-  sec('Exterior doors',ext,false);sec('Interior doors',int,false);sec('Salvage &amp; B-grade deals',sv,true);
+  if(PICK.length){sec('Picked for you',it,false);sec('Salvage &amp; B-grade picks',sv,true)}
+  else{sec('Exterior doors',ext,false);sec('Interior doors',int,false);sec('Salvage &amp; B-grade deals',sv,true)}
   document.getElementById('main').innerHTML=h||'<div class="empty">Nothing matches that search right now — call us, we may have it or can order it.</div>';
   var n=it.length+sv.length;document.getElementById('count').textContent=n+' showing';
 }
@@ -153,8 +172,8 @@ db.collection('norwood').onSnapshot(function(snap){
     if(doc.id.indexOf('__')===0)return;
     var d=doc.data();d._id=doc.id;
     if(d.removed)return;
-    if(isSalv(d)){if(d.sold||(parseInt(d.qty)||0)<=0)return;s.push(d)}
-    else{if((parseInt(d.qoh)||0)<=0)return;a.push(d)}
+    if(isSalv(d)){if(d.sold&&!(PICK.length&&picked(d,true)))return;if((parseInt(d.qty)||0)<=0&&!(PICK.length&&picked(d,true)))return;s.push(d)}
+    else{if((parseInt(d.qoh)||0)<=0&&!(PICK.length&&picked(d,false)))return;a.push(d)}
   });
   a.sort(function(x,y){return(x.description||'').localeCompare(y.description||'')});
   s.sort(function(x,y){return(Number(y.salvNo)||0)-(Number(x.salvNo)||0)});
@@ -164,6 +183,11 @@ db.collection('norwood').onSnapshot(function(snap){
 
 document.getElementById('q').addEventListener('input',function(e){Q=e.target.value;render()});
 document.getElementById('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;FILTER=b.dataset.f;[].forEach.call(document.querySelectorAll('.chip'),function(c){c.classList.toggle('on',c===b)});render()});
+if(PICK.length){document.body.classList.add('picked');document.querySelector('.hero h1').textContent='Doors picked for you';document.querySelector('.hero .eyebrow').textContent='Norwood Supply';document.getElementById('pickmsg').textContent=PICK.length+' door'+(PICK.length>1?'s':'')+' picked for you — tap a photo to see it big.'}
+var lb=document.getElementById('lb');
+document.getElementById('main').addEventListener('click',function(e){var im=e.target.closest('.ph img');if(!im)return;document.getElementById('lbimg').src=im.src;document.getElementById('lbcap').textContent=im.dataset.cap||'';lb.classList.add('on')});
+lb.addEventListener('click',function(e){if(e.target.id!=='lbimg')lb.classList.remove('on')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
 var p=new URLSearchParams(location.search);if(p.get('q')){Q=p.get('q');document.getElementById('q').value=Q}
 if(p.get('f')){var c=document.querySelector('.chip[data-f="'+p.get('f')+'"]');if(c)c.click()}
 </script>
