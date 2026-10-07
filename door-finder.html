@@ -232,7 +232,7 @@
       <p>We've saved your photos and details. Someone from Norwood will follow up, usually the same business day. Want to talk now?</p>
       <div class="btns">
         <a href="tel:+19047686818">Call (904) 768-6818</a>
-        <a class="alt" href="sms:+19042386383">Text (904) 238-6383</a>
+        <a class="alt" href="sms:+19044035261">Text (904) 403-5261</a>
       </div>
       <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">6200 Norwood Ave, Jacksonville · Mon–Fri 7:30–5 · Sat 8:30–12</p>
     </div>
@@ -314,7 +314,7 @@ $('go').addEventListener('click', async function(){
   if (!photos.Main){ showErr("Add a photo of your current door first — that's the one thing we need."); return; }
   var name = $('name').value.trim(), contact = $('contact').value.trim();
   if (!name || !contact){ showErr("Add your name and a phone or email so we can follow up."); return; }
-  if (FUNCTION_URL.indexOf('http') !== 0){ showErr("This page isn't connected yet. Call us at (904) 768-6818 or text your photo to (904) 238-6383."); return; }
+  if (FUNCTION_URL.indexOf('http') !== 0){ showErr("This page isn't connected yet. Call us at (904) 768-6818 or text your photo to (904) 403-5261."); return; }
 
   var body = {
     photos: [photos.Main].concat(photos.Main2 ? [photos.Main2] : []),
@@ -341,7 +341,7 @@ $('go').addEventListener('click', async function(){
     $('working').classList.remove('show');
     $('form').style.display = '';
     var m = /Failed to fetch|NetworkError|Load failed/i.test(e.message)
-      ? "We couldn't reach Norwood right now. Check your signal and try again, or text the photo to (904) 238-6383."
+      ? "We couldn't reach Norwood right now. Check your signal and try again, or text the photo to (904) 403-5261."
       : e.message;
     showErr(m);
     return;
