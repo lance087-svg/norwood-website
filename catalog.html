@@ -936,6 +936,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
+<link rel="stylesheet" href="catalog-gallery.css">
 </head>
 <body>
 
@@ -968,8 +969,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="catalog-hero">
   <div class="container">
-    <div class="eyebrow">In-Stock Inventory</div>
-    <h1>Browse our <em>door inventory.</em></h1>
+    <div class="eyebrow">Jacksonville’s door specialists</div>
+    <h1>Find your <em>next door.</em></h1>
     <p>A selection of doors we currently stock or recently had on the floor. Prices and availability change weekly — call or text us to confirm before you make the drive.</p>
   </div>
 </section>
@@ -988,6 +989,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="catalog-section">
   <div class="container">
+    <div class="catalog-toolbar"><label for="catalog-sort">Sort by <select id="catalog-sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A–Z</option></select></label></div>
     <p id="catalog-results" role="status" aria-live="polite">Showing 26 doors</p>
     <p id="catalog-empty" hidden>No matching doors. Try another search or category, or <a href="tel:9047686818">call us about other options</a>.</p>
     <div class="catalog-grid">
@@ -1424,5 +1426,7 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
 <!-- Release only after the inquiry receiver has been deployed and verified. -->
 <script src="catalog-inquiry.js" data-endpoint="https://doorfinder-933963197210.us-central1.run.app"></script>
 
+<dialog id="photo-dialog" aria-labelledby="photo-title"><button type="button" id="photo-close">Close</button><h2 id="photo-title"></h2><img id="photo-full" alt=""><p id="photo-details"></p></dialog>
+<script src="catalog-gallery.js"></script>
 </body>
 </html>
