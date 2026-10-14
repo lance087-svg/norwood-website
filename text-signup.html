@@ -171,6 +171,11 @@
         <h2>You're signed up</h2>
         <p>Thanks — we'll text you order and delivery updates at the number you provided. Reply STOP at any time to opt out.</p>
       </div>
+
+      <div class="success-state" id="noConsentState">
+        <h2>No texts will be sent</h2>
+        <p>You submitted the form without checking the consent box, so your number has <strong>not</strong> been enrolled and you won't receive any text messages from Norwood Supply. If you'd like order and delivery text updates, <a href="text-signup.html">go back</a> and check the box, or text <strong>START</strong> to <a href="sms:+19049155234?&amp;body=START">(904) 915-5234</a>.</p>
+      </div>
     </div>
   </div>
 </main>
@@ -207,6 +212,7 @@
   const phoneError = document.getElementById('phoneError');
   const submitBtn = document.getElementById('submitBtn');
   const successState = document.getElementById('successState');
+  const noConsentState = document.getElementById('noConsentState');
 
   phoneInput.addEventListener('input', function () {
     let digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
@@ -230,7 +236,11 @@
     }
     phoneError.style.display = 'none';
 
-    if (!consent || !name) return;
+    if (!name) { document.getElementById('fullName').focus(); return; }
+
+    // Consent checkbox is optional. Without it the form still submits,
+    // but the number is NOT enrolled and no record is written.
+    if (!consent) { showNoConsent(); return; }
 
     document.getElementById('saveError').hidden = true;
     if (!db) { showSaveError(); return; }
@@ -266,6 +276,11 @@
     error.hidden = false;
     submitBtn.disabled = false;
     submitBtn.textContent = 'Try Again';
+  }
+
+  function showNoConsent() {
+    form.style.display = 'none';
+    noConsentState.style.display = 'block';
   }
 
   function showSuccess() {
