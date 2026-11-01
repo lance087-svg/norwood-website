@@ -1,0 +1,100 @@
+/* Norwood Supply's 55th anniversary: an optional thank-you, opened on demand. */
+.ns-anniversary-header .header-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px 28px;
+  align-items: center;
+  padding: 12px 24px;
+}
+.ns-anniversary-header .logo { grid-column: 1; grid-row: 1; justify-self: start; }
+.ns-anniversary-header nav { grid-column: 1; grid-row: 2; }
+.ns-anniversary-header nav ul { gap: 24px; flex-wrap: wrap; }
+.ns-anniversary-header.header { padding: 0; }
+.ns-anniversary-trigger {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #69501e;
+  cursor: pointer;
+  font: inherit;
+  flex-shrink: 0;
+}
+.ns-anniversary-trigger img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px #0002);
+  transition: transform 160ms ease;
+}
+.ns-anniversary-trigger span { font-size: 11px; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; }
+.ns-anniversary-trigger:hover img { transform: translateY(-2px); }
+.ns-anniversary-trigger:focus-visible,
+.ns-anniversary-dialog button:focus-visible { outline: 3px solid #1e70b8; outline-offset: 4px; border-radius: 6px; }
+.ns-anniversary-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(560px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid #b7954a;
+  border-radius: 18px;
+  color: #2a2520;
+  background: #fcf9f2;
+  box-shadow: 0 24px 80px #0005;
+  overflow: auto;
+}
+.ns-anniversary-dialog::backdrop { background: #151310b8; }
+.ns-anniversary-content { padding: 32px 40px 36px; text-align: center; }
+.ns-anniversary-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #51452d;
+  cursor: pointer;
+  font: 30px/1 Arial, sans-serif;
+}
+.ns-anniversary-close:hover { background: #ede3cc; }
+.ns-anniversary-dialog img { display: block; width: 156px; height: 156px; margin: 0 auto 16px; }
+.ns-anniversary-dialog h2 { margin: 0 0 20px; font-family: 'Lora', Georgia, serif; font-size: clamp(26px, 5vw, 34px); font-weight: 600; line-height: 1.2; color: #2a2520; }
+.ns-anniversary-dialog p { margin: 0 0 16px; font-size: 15px; line-height: 1.7; }
+.ns-anniversary-dialog .ns-anniversary-signature { margin: 22px 0; color: #69501e; }
+.ns-anniversary-done { padding: 12px 24px; border: 1px solid #2a2520; border-radius: 24px; background: #2a2520; color: #fcf9f2; cursor: pointer; font: 600 14px 'Sora', system-ui, sans-serif; }
+.ns-anniversary-done:hover { background: #4c402c; }
+@media (max-width: 900px) {
+  .ns-anniversary-home .header-inner { grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; }
+  .ns-anniversary-home nav { grid-column: 2; grid-row: 1; }
+  .ns-anniversary-home .ns-anniversary-trigger { grid-column: 3; grid-row: 1; }
+  .ns-anniversary-home nav ul { gap: 16px; }
+  .ns-anniversary-trigger img { width: 80px; height: 80px; }
+  .ns-anniversary-catalog .header-inner { gap: 10px 16px; }
+  .ns-anniversary-catalog .ns-anniversary-trigger { grid-row: 1; }
+  .ns-anniversary-catalog nav { grid-column: 1 / -1; }
+  .ns-anniversary-catalog nav ul { gap: 16px 20px; }
+}
+@media (max-width: 540px) {
+  .ns-anniversary-header .header-inner { padding: 10px 16px; gap: 10px; }
+  .ns-anniversary-home .logo { font-size: 21px; }
+  .ns-anniversary-home .logo span { max-width: 190px; font-size: 8px; letter-spacing: 0.1em; line-height: 1.5; }
+  .ns-anniversary-trigger img { width: 68px; height: 68px; }
+  .ns-anniversary-trigger span { font-size: 10px; }
+  .ns-anniversary-catalog nav a { font-size: 13px; }
+  .ns-anniversary-content { padding: 28px 24px; }
+  .ns-anniversary-dialog img { width: 124px; height: 124px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-anniversary-trigger img { transition: none; }
+  .ns-anniversary-trigger:hover img { transform: none; }
+}
