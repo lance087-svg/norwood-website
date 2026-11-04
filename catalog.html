@@ -159,6 +159,8 @@ h1, h2, h3 { font-family: 'Lora', Georgia, serif; font-weight: 600; line-height:
   box-shadow: 0 20px 40px -10px rgba(42, 37, 32, 0.14);
 }
 .catalog-card.hidden { display: none; }
+.catalog-card.catalog-featured { border: 2px solid var(--primary); }
+.catalog-featured .catalog-tag { background: var(--primary-deep); color: var(--white); }
 
 .catalog-image {
   position: relative;
@@ -285,6 +287,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "itemListElement": [
     {
       "@type": "Product",
+      "position": 1,
+      "@id": "https://www.norwoodsupply.com/catalog.html#door-12",
+      "name": "3/0 x 6/8 Fiberglass 6-Panel Exterior Prehung Door",
+      "category": "Exterior Door",
+      "description": "White primed with a 4-9/16\" primed wood jamb. Our most popular door — plenty of left-hand and right-hand units in stock. Nominal size: 36\" x 80\". Also available in 32\" and 30\" widths, all 6/8 (80\") tall. Call or text to confirm your size and swing.",
+      "image": "https://static.wixstatic.com/media/b98b97_56b826719d6446c5a1d4564242921d10~mv2.png",
+      "brand": {
+        "@type": "Brand",
+        "name": "Norwood Supply"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "229",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "url": "https://www.norwoodsupply.com/catalog.html#door-12",
+        "seller": {
+          "@type": "Organization",
+          "name": "Norwood Supply"
+        }
+      }
+    },
+    {
+      "@type": "Product",
       "name": "Full-Lite Fiberglass Double Doors with Sidelites — Misordered — One Only",
       "@id": "https://www.norwoodsupply.com/catalog.html#oneoff-double-sidelites-6068",
       "category": "Exterior Door",
@@ -304,7 +331,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "value": 1
         }
       },
-      "position": 1
+      "position": 2
     },
     {
       "@type": "Product",
@@ -312,7 +339,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@id": "https://www.norwoodsupply.com/catalog.html#prefinished-craftsman-3070",
       "description": "Misordered door — only one available. Prefinished Craftsman prehung door, 3 feet wide by 7 feet tall (36\" × 84\" nominal door size). Left-hand inswing, built on 6-9/16\" composite jambs. $699. Contact Norwood Supply to confirm availability.",
       "image": "https://www.norwoodsupply.com/images/prefinished-craftsman-3070-clean.png",
-      "position": 2,
+      "position": 3,
       "offers": {
         "@type": "Offer",
         "price": "699",
@@ -347,11 +374,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "value": 1
         }
       },
-      "position": 3
+      "position": 4
     },
     {
       "@type": "Product",
-      "position": 4,
+      "position": 5,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-1",
       "name": "Full Mini Blind Flush Glazed Double Fiberglass Door Unit",
       "category": "Exterior Door",
@@ -376,7 +403,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 5,
+      "position": 6,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-2",
       "name": "Decorative 3/4 Lite Prairie Style Fiberglass Prehung Door Unit with Sidelites",
       "category": "Exterior Door",
@@ -401,7 +428,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 6,
+      "position": 7,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-3",
       "name": "Full Lite Flush Glazed Fiberglass Patio Prehung Double Door Unit",
       "category": "Exterior Door",
@@ -426,7 +453,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 7,
+      "position": 8,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-4",
       "name": "Full Glass Decorative Prairie Style 3ft wide 6ft8\" Tall",
       "category": "Exterior Door",
@@ -451,7 +478,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 8,
+      "position": 9,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-5",
       "name": "3-Lite Craftsman style",
       "category": "Exterior Door",
@@ -476,7 +503,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 9,
+      "position": 10,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-6",
       "name": "6 Lite Fiberglass Door Unit Prehung",
       "category": "Exterior Door",
@@ -501,7 +528,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 10,
+      "position": 11,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-7",
       "name": "4 Lite Exterior Fiberglass Door",
       "category": "Exterior Door",
@@ -526,7 +553,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 11,
+      "position": 12,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-8",
       "name": "Oval Prehung Exterior Fiberglass",
       "category": "Exterior Door",
@@ -551,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 12,
+      "position": 13,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-9",
       "name": "French style single door unit fiberglass",
       "category": "Exterior Door",
@@ -576,7 +603,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 13,
+      "position": 14,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-10",
       "name": "Craftsman Clear Glass",
       "category": "Exterior Door",
@@ -601,7 +628,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Product",
-      "position": 14,
+      "position": 15,
       "@id": "https://www.norwoodsupply.com/catalog.html#door-11",
       "name": "1 Lite Fiberglass Exterior prehung unit",
       "category": "Exterior Door",
@@ -618,31 +645,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "url": "https://www.norwoodsupply.com/catalog.html#door-11",
-        "seller": {
-          "@type": "Organization",
-          "name": "Norwood Supply"
-        }
-      }
-    },
-    {
-      "@type": "Product",
-      "position": 15,
-      "@id": "https://www.norwoodsupply.com/catalog.html#door-12",
-      "name": "Exterior fiberglass prehung door unit",
-      "category": "Exterior Door",
-      "description": "exterior fiberglass prehung door units on 4&9/16 Primed wood jambs available in 36\", 32\" and 30 \" widths all 6'/8\" in height available in…",
-      "image": "https://static.wixstatic.com/media/b98b97_56b826719d6446c5a1d4564242921d10~mv2.png",
-      "brand": {
-        "@type": "Brand",
-        "name": "Norwood Supply"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "309",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "url": "https://www.norwoodsupply.com/catalog.html#door-12",
         "seller": {
           "@type": "Organization",
           "name": "Norwood Supply"
@@ -1065,6 +1067,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p id="catalog-results" role="status" aria-live="polite">Showing 29 doors</p>
     <p id="catalog-empty" hidden>No matching doors. Try another search or category, or <a href="tel:9047686818">call us about other options</a>.</p>
     <div class="catalog-grid">
+        <article id="door-12" class="catalog-card catalog-featured" data-cat="exterior">
+          <div class="catalog-image">
+            <img src="https://static.wixstatic.com/media/b98b97_56b826719d6446c5a1d4564242921d10~mv2.png" alt="White primed fiberglass 6-panel exterior prehung door" loading="eager">
+            <span class="catalog-tag">Most Popular</span>
+          </div>
+          <div class="catalog-body">
+            <h3>3/0 x 6/8 Fiberglass 6-Panel Exterior Prehung Door</h3>
+            <div class="catalog-price">$229</div>
+            <p>White primed with a 4-9/16&quot; primed wood jamb. Our most popular door — plenty of left-hand and right-hand units in stock. Nominal size: 36&quot; x 80&quot;. Also available in 32&quot; and 30&quot; widths, all 6/8 (80&quot;) tall. Call or text to confirm your size and swing.</p>
+            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
+            <a class="catalog-cta catalog-text" href="sms:9044035261?body=Hey%20Norwood%20Supply%2C%20I%20am%20interested%20in%20the%20%24229%203%2F0%20x%206%2F8%20Fiberglass%206-Panel%20Exterior%20Prehung%20Door.%20Is%20my%20size%20and%20swing%20available%3F%20https%3A%2F%2Fwww.norwoodsupply.com%2Fcatalog.html%23door-12">Text about this door →</a>
+          </div>
+        </article>
+
         <article id="oneoff-double-sidelites-6068" class="catalog-card" data-cat="exterior">
           <div class="catalog-image"><img src="images/oneoff-double-sidelites-6068.jpg" alt="White full-lite fiberglass double entry doors with two clear-glass sidelites" loading="lazy"><span class="catalog-tag">Misordered · One Only · AS IS</span></div>
           <div class="catalog-body"><h3>Full-Lite Fiberglass Double Doors with Sidelites — Misordered — One Only</h3><div class="catalog-price">$1,499</div><p>Misordered unit — one only, sold AS IS for $1,499. Smooth fiberglass prehung exterior double doors with full clear insulated glass and two matching full-lite sidelites. Nominal door pair: 6′ wide × 6′8″ tall; each sidelite: 12″ × 6′8″. Right-hand outswing per factory label. 1¾″ thick doors; 22″ × 64″ door glass inserts; 4-9/16″ composite exterior jambs; white astragal, weatherstripping, bumper sill and dull chrome non-removable-pin hinges. Double bored for handle and deadbolt. No casing. Door-pair width excludes sidelites and frame; confirm overall frame size and swing before purchase. Contact us to confirm availability.</p><a href="images/oneoff-double-sidelites-6068-label.jpg" target="_blank" rel="noopener" class="catalog-cta">View factory label →</a><a href="tel:9047686818" class="catalog-cta">Call about this door →</a><a class="catalog-cta catalog-text" href="sms:9044035261?body=Hey%20Norwood%20Supply%2C%20is%20the%20%241%2C499%20as-is%20misordered%20full-lite%20fiberglass%20double%20door%20with%20two%20sidelites%2C%20right-hand%20outswing%2C%20still%20available%3F%20https%3A//www.norwoodsupply.com/catalog.html%23oneoff-double-sidelites-6068">Text about this door →</a></div>
@@ -1220,19 +1236,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>Available 32" x 80", 36" x 80" Actual unit size: 33-1/2" x 81-1/2", 37-1/2" x 81-1/2" Fits rough opening: 34" x 82", 38" x 82" Fiberglass…</p>
             <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
             <a class="catalog-cta catalog-text" href="sms:9044035261?body=Hi%20Norwood%20Supply%2C%20is%20this%20door%20available%3F%201%20Lite%20Fiberglass%20Exterior%20prehung%20unit%20https%3A%2F%2Fwww.norwoodsupply.com%2Fcatalog.html%23door-11">Text about this door →</a>
-          </div>
-        </article>
-        <article id="door-12" class="catalog-card" data-cat="exterior">
-          <div class="catalog-image">
-            <img src="https://static.wixstatic.com/media/b98b97_56b826719d6446c5a1d4564242921d10~mv2.png" alt="Exterior fiberglass prehung door unit" loading="lazy">
-            <span class="catalog-tag">Exterior</span>
-          </div>
-          <div class="catalog-body">
-            <h3>Exterior fiberglass prehung door unit</h3>
-            <div class="catalog-price">$309</div>
-            <p>exterior fiberglass prehung door units on 4&amp;9/16 Primed wood jambs available in 36", 32" and 30 " widths all 6'/8" in height available in…</p>
-            <a href="tel:9047686818" class="catalog-cta">Call about this →</a>
-            <a class="catalog-cta catalog-text" href="sms:9044035261?body=Hi%20Norwood%20Supply%2C%20is%20this%20door%20available%3F%20Exterior%20fiberglass%20prehung%20door%20unit%20https%3A%2F%2Fwww.norwoodsupply.com%2Fcatalog.html%23door-12">Text about this door →</a>
           </div>
         </article>
         <article id="door-13" class="catalog-card" data-cat="exterior">
