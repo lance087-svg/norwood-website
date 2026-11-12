@@ -171,7 +171,7 @@ db.collection('norwood').onSnapshot(function(snap){
   snap.forEach(function(doc){
     if(doc.id.indexOf('__')===0)return;
     var d=doc.data();d._id=doc.id;
-    if(d.removed)return;
+    if(d.removed||d.websiteHidden===true)return;
     if(isSalv(d)){if(d.sold&&!(PICK.length&&picked(d,true)))return;if((parseInt(d.qty)||0)<=0&&!(PICK.length&&picked(d,true)))return;s.push(d)}
     else{if((parseInt(d.qoh)||0)<=0&&!(PICK.length&&picked(d,false)))return;a.push(d)}
   });
