@@ -1,0 +1,32 @@
+.door-values { padding: 52px 0; background: #edf4fa; color: #193348; }
+.door-values h2, .shaker-construction h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.2; margin: 10px 0 14px; }
+.door-values-intro { max-width: 760px; margin-bottom: 24px; }
+.door-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.door-value { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #cbdce9; border-radius: 12px; background: #fff; }
+.door-value > img { display: block; width: 100%; height: 210px; object-fit: contain; padding: 16px; background: #f8fafc; }
+.door-value > div { padding: 22px; }
+.door-value-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #365d78; }
+.door-value h3 { font-size: 1.2rem; line-height: 1.35; margin: 8px 0 12px; }
+.door-value .door-value-price { font-size: 2.3rem; line-height: 1.2; font-weight: 700; color: #174e7e; margin: 0 0 14px; }
+.door-value-price span { display: block; font-size: .85rem; font-weight: 500; margin-top: 5px; }
+.door-value p { margin-bottom: 16px; line-height: 1.65; }
+.door-values a, .shaker-construction a { color: #135b92; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+.door-values-detail { margin: 22px 0; }
+.door-values-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.door-values-actions a { display: inline-block; padding: 13px 20px; border: 1px solid #175d92; border-radius: 6px; background: #175d92; color: #fff; text-decoration: none; }
+.door-values-actions a + a { background: #fff; color: #175d92; }
+.door-values-note { max-width: 820px; font-size: .85rem; margin-top: 16px; color: #465d6e; }
+.door-values a:focus-visible, .shaker-construction a:focus-visible { outline: 3px solid #b56515; outline-offset: 4px; }
+.shaker-construction { padding: 56px 0; background: #f3f7fa; scroll-margin-top: 110px; }
+.shaker-construction .container { max-width: 940px; }
+.shaker-construction p { line-height: 1.75; margin: 18px 0; }
+.shaker-construction dl { display: grid; gap: 16px; margin: 24px 0; }
+.shaker-construction dl > div { border-left: 3px solid #1e70b8; padding-left: 18px; }
+.shaker-construction dt { font-weight: 700; margin-bottom: 5px; }
+.shaker-construction dd { margin: 0; line-height: 1.7; }
+.catalog-card { scroll-margin-top: 140px; }
+@media (max-width: 760px) {
+  .door-values-grid { grid-template-columns: 1fr; }
+  .door-values, .shaker-construction { padding: 36px 0; }
+  .door-value > img { height: 180px; }
+}
