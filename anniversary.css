@@ -98,3 +98,12 @@
   .ns-anniversary-trigger img { transition: none; }
   .ns-anniversary-trigger:hover img { transform: none; }
 }
+@media (max-width: 900px) {
+  .ns-anniversary-home { position: static; }
+  .ns-anniversary-home .header-inner { grid-template-columns: minmax(0,1fr) auto; }
+  .ns-anniversary-home .ns-anniversary-trigger { grid-column: 2; }
+  .ns-anniversary-home nav { grid-column: 1 / -1; grid-row: 2; }
+  .ns-anniversary-home .menu-toggle { display: none; }
+  .ns-anniversary-home nav #primary-menu { position: static; display: flex; flex-flow: row wrap; align-items: center; gap: 2px 6px; padding: 0; border: 0; }
+  .ns-anniversary-home nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 4px 8px; font-size: 14px; white-space: nowrap; }
+}
