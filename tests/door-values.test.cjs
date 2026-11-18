@@ -52,7 +52,22 @@ test('featured links resolve and calls remain separate from texts', () => {
       assert.equal(number, m[1] === 'tel' ? '9047686818' : '9044035261');
     }
     assert(!html.includes('9042386383'));
-    assert(html.includes('door-values.css?v=20261118'));
+    assert(html.includes('door-values.css?v=20261118b'));
   }
   assert(read('door-values.css').includes('@media (max-width: 760px)'));
+});
+
+test('homepage leads with featured doors and retains double doors farther down', () => {
+  assert.equal((home.match(/<h1\b/g) || []).length, 1);
+  assert(home.indexOf('id="featured-doors"') < home.indexOf('<!-- TRUST STRIP -->'));
+  assert(home.indexOf('id="featured-doors"') < home.indexOf('id="double-door-inspiration"'));
+  assert.match(home, /id="double-door-inspiration"[\s\S]*?images\/hero-walnut-double-door\.jpg/);
+  for (const html of [home, catalog]) {
+    const feature = html.match(/<section class="door-values"[\s\S]*?<\/section>/)[0];
+    assert.match(feature, /images\/shaker-2panel-slab-only\.webp/);
+    assert.match(feature, /without a jamb or surrounding trim/);
+  }
+  assert.match(card('door-19'), /images\/shaker-2panel-slab-only\.webp/);
+  assert(!card('door-14').includes('shaker-2panel-slab-only.webp'));
+  assert(fs.existsSync(path.join(__dirname, '..', 'images/shaker-2panel-slab-only.webp')));
 });
