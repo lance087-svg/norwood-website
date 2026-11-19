@@ -842,6 +842,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/anniversary.css?v=20261101">
 <script src="/anniversary.js?v=20261101" defer></script>
 <link rel="stylesheet" href="door-values.css?v=20261118b">
+<style>
+@media (max-width: 760px) {
+  .door-values[aria-labelledby="door-values-title"] .door-value > img {
+    height: clamp(250px, 72vw, 310px);
+    padding: 8px;
+    object-fit: contain;
+  }
+}
+</style>
 </head>
 <body>
 
